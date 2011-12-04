@@ -1,0 +1,24 @@
+#!/bin/sh
+
+case $1 in
+okc) server=10.0.42.2 ;;
+dfw) server=10.0.0.2 ;;
+*)   echo "usage: backup (okc|dfw)"; exit 1 ;;
+esac
+
+echo "backup in progress"
+echo
+
+rsync="rsync -rlptHXPhhFy --delete-delay --delete-excluded --partial-dir=.rsync-partial"
+remote=jeff@$server
+
+echo "---------- Home Directory ----------"
+$rsync ~/ $remote:Backups/MacBook/Current/
+echo
+
+for vm in ~/"Virtual Machines"/*.vmwarevm; do
+  echo "---------- Virtual Machine: ${vm##*/} ----------"
+  $rsync "$vm" $remote:VirtualMachines/
+  echo
+done
+

@@ -1,0 +1,52 @@
+#!/bin/sh -e
+#
+# Clone a VMware Fusion VM
+#
+# Usage: clonevm src-vm dst-vm
+#
+
+# Arguments
+srcvm=${1%/}
+dstvm=${2%/}
+src=${srcvm%.vmwarevm}
+dst=${dstvm%.vmwarevm}
+
+# Validate arguments
+[ -n "$srcvm" -a -n "$dstvm" ] || {
+  echo "Usage $0 src-vm dst-vm"
+  exit 1
+}
+[ -d "$srcvm" ] || {
+  echo "$srcvm: No such directory"
+  exit 1
+}
+[ ! -e "$dstvm" ] || {
+  echo "$dstvm: Path exists"
+  exit 1
+}
+
+# Copy VM package
+echo "[Copying] $srcvm -> $dstvm"
+cp -Rp "$srcvm" "$dstvm"
+cd "$dstvm"
+
+# Rename files
+for srcfile in "$src"*; do
+  dstfile="${srcfile/#$src/$dst}"
+  echo "[Renaming] $srcfile -> $dstfile"
+  mv -n "$srcfile" "$dstfile"
+done
+
+# Replace text in files
+for f in *.vm*; do
+  if file "$f" | grep -q text; then
+    echo "[Editing] $f"
+    sed -i .bak "s/$src/$dst/g" "$f"
+  fi
+done
+
+# Remove backups
+echo '[Cleaning] Backups'
+rm *.bak >/dev/null 2>&1 || true
+
+echo '[Completed]'
