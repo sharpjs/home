@@ -1,0 +1,219 @@
+#!/usr/bin/ruby
+#
+# Convert: QuickBooks Online Payroll Detail Report
+#      to: Xero Accounts Payable Invoices
+#
+# Output Fields:
+#   - ContactName     Contact, matched with an existing contact or created
+#   - InvoiceNumber   Reference number. Keep same for same invoice.
+#   - InvoiceDate     Date invoice created. mm/dd/yyyy
+#   - DueDate         Date payment is due.  mm/dd/yyyy
+#   - Description     Line item description
+#   - Quantity        Line item quantity
+#   - UnitAmount      Line item unit amount
+#   - AccountCode     Line item account numeric code
+#   - TaxType         Name of tax scheme
+#
+require 'date'
+
+# Configuration
+
+DATE_FORMAT = '%m/%d/%Y'
+$\ = "\n"
+$, = ','
+
+# Data Structures
+
+class Invoice
+  attr_reader :contact, :code, :reference, :created, :due, :lines
+
+  def initialize(contact, code, schedule, *lines)
+    @contact, @code, @schedule, @lines = contact, code, schedule, lines
+  end
+
+  def set_dates(first, last)
+    @reference = "#{first} to #{last} #{@code}"
+    @created   = last
+    @due       = @schedule.call last
+  end
+
+  def write_to(file)
+    header = nil
+    lines.select do |l|
+      l.amount and
+      l.amount.to_f > 0.005
+    end.each do |l|
+      print \
+        header.nil? ? header = @contact : '',
+        @reference,
+        @created.strftime(DATE_FORMAT),
+        @due    .strftime(DATE_FORMAT),
+        l.name, 1, l.amount, l.account, 'Tax Exempt (0%)'
+    end
+  end
+
+  def clear
+    @reference, @created, @due = nil
+    lines.each {|l| l.amount = nil}
+  end
+end
+
+class LineItem
+  attr_reader   :name, :account
+  attr_accessor :amount
+
+  def initialize(name, account)
+    @name, @account = name, account
+  end
+end
+
+# Schedules
+
+def future(date, months, day)
+  date >>= months
+  date  -= date.mday - day
+end
+
+net45 = lambda do |d|
+  future(d, 2, d.mday > 15 ? 15 : 0)
+end
+
+monthly = lambda do |d|
+  d = net45.call(d)
+  future(d, 1, 15)
+end
+
+quarterly = lambda do |d|
+  d = net45.call(d)
+  months = 3 - (d.month - 1) % 3
+  future(d, months, 15)
+end
+
+yearly = lambda do |d|
+  d = net45.call(d)
+  months = 14 - d.month
+  future(d, months, 0)
+end
+
+# Invoices
+
+net = LineItem.new('Wages',                          400)
+fit = LineItem.new('Federal Income Tax Withheld',    400)
+sit = LineItem.new(  'State Income Tax Withheld',    400)
+sse = LineItem.new('Social Security Tax - Employee', 400)
+ssc = LineItem.new('Social Security Tax - Company',  410)
+mce = LineItem.new('Medicare Tax - Employee',        400)
+mcc = LineItem.new('Medicare Tax - Company',         410)
+fut = LineItem.new('Federal Unemployment Tax',       411)
+sut = LineItem.new(  'State Unemployment Tax',       411)
+pse = LineItem.new('401(k) Contribution - Employee', 400)
+psc = LineItem.new('401(k) Contribution - Company',  420)
+
+invoices = [
+  Invoice.new('Intuit Online Payroll',                   'W',  net45,     net),
+  Invoice.new('Internal Revenue Service',                'FT', monthly,   fit, sse, ssc, mce, mcc),
+  Invoice.new('Internal Revenue Service',                'FU', yearly,    fut),
+  Invoice.new('Oklahoma Tax Commission',                 'ST', quarterly, sit),
+  Invoice.new('Oklahoma Employment Security Commission', 'SU', quarterly, sut),
+  Invoice.new('Jeffrey Sharp Individual 401(k) Plan',    'PS', net45,     pse, psc)
+]
+
+# Processing
+
+class Input
+  attr_reader :row, :col, :text
+
+  def initialize(file=$stdin)
+    @file, @state      = file, :skipping
+    @row, @col, @width = 0, 0, 1
+  end
+
+  def next
+    while line = @file.gets
+      line.strip!
+      @row += 1
+
+      case @state
+      when :skipping
+        if line =~ /<tr class=["']?reportEven\b/
+          @state = :reading
+          @type  = 'Even'
+        end
+
+      when :reading
+        if line =~ /<td [^>]*>([^<]*)<\/td>/
+          @text = $1
+          @text.strip!
+          @col += @width
+          @width = line =~ /\bcolspan=["']?(\d+)\b/ ? $1.to_i : 1
+          if @text == 'Total' and @col == 1
+            @state = :skipping
+          elsif @text != '&nbsp;'
+            return @text
+          end
+        elsif line == '</tr>'
+          @col, @width = 0, 1
+        elsif line =~ /<tr class=["']?report(Even|Odd)\b/
+          is_new = @type != $1
+          @type = $1
+          return :end if is_new
+        end
+      end
+    end
+    @text = nil
+  end
+
+  def next_amount
+    self.next and
+    @text.start_with? '$' and
+    @text.gsub! /[$,]/, ''
+  end
+end
+
+# Main
+
+input = Input.new
+text = input.next
+exit if text.nil?
+
+puts "ContactName,InvoiceNumber,InvoiceDate,DueDate,Description,Quantity,UnitAmount,AccountCode,TaxType"
+
+begin
+  item = case text
+  when 'FIT'          then fit
+  when 'SS'           then input.col < 9 ? sse : ssc
+  when 'Med'          then input.col < 9 ? mce : mcc
+  when 'FUTA'         then fut
+  when 'OK PIT'       then sit
+  when 'OK SUI'       then sut
+  when '401k Contrib' then input.col < 9 ? pse : psc
+
+  when /^Net \$([\d,]+\.\d\d)$/
+    net.amount = $1.gsub /,/, ''
+    nil
+  when /^(\d\d)\/(\d\d)\/(\d\d\d\d)/
+    paid  = Date.new $3.to_i, $1.to_i, $2.to_i
+    nil
+  when /^(\d\d)\/(\d\d)-(\d\d)\/(\d\d)$/
+    first = Date.new paid.year, $1.to_i, $2.to_i
+    last  = Date.new paid.year, $3.to_i, $4.to_i
+    if last > paid
+      first <<= 12
+      last  <<= 12
+    end
+    invoices.each {|i| i.set_dates first, last}
+    nil
+  when :end
+    invoices.each {|i| i.write_to $stdout; i.clear}
+    nil
+  else nil
+  end
+
+  unless item.nil?
+    item.amount = input.next_amount or break
+  end
+end while text = input.next
+
+# unless line.nil?
+#   error
+# end
