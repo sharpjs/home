@@ -1,7 +1,26 @@
 # Profile
+#
 
-PATH=~/.brew/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:~/.bin
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:~/.bin
+
+case `uname` in
+  FreeBSD)
+    umask 077
+    ;;
+  Darwin)
+    PATH=~/.brew/bin:$PATH
+    ;;
+esac
+
 export PATH
 
-# umask 077
+if which -s vim; then
+  EDITOR=vim
+  export EDITOR
+fi
+
+if which -s less; then
+  PAGER=less
+  export PAGER
+fi
 
