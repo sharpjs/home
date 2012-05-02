@@ -1,0 +1,14 @@
+[core]
+	autocrlf = true
+
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = \"C:/Program Files/SourceGear/Common/DiffMerge/sgdm.exe\" --merge  \"$LOCAL\" \"$BASE\" \"$REMOTE\" --result=\"$MERGED\" --title1=\"Head\" --title2=\"Merged: $MERGED\" --title3=\"Mine\"
+	trustExitCode = false
+
+[diff]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = \"C:/Program Files/SourceGear/Common/DiffMerge/sgdm.exe\" \"$LOCAL\" \"$REMOTE\" --title1=\"Head\" --title2=\"Mine\"
+	prompt = false
