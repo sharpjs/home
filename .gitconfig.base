@@ -1,5 +1,33 @@
 [alias]
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
-	lga = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --all
-	trace = log --follow -p
+	# Convenience
+	a      = add
+	aa     = add --all
+	b      = branch
+	d      = diff
+	ci     = commit
+	co     = checkout
+	dc     = diff --cached
+	m      = merge
+	pom    = push origin master
+	pr     = pull --rebase
+	r      = rebase
+	ra     = rebase --abort
+	rc     = rebase --continue
+	ri     = rebase --interactive HEAD~10
+	s      = status
+	reboot = reset --hard
 
+	# Logs
+	lg     = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
+	lga    = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --all
+	lr     = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --max-count=15
+	lra    = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --max-count=15 --all
+	trace  = log --follow -p
+
+	# TFS
+	ta     = !git tfs rcheckin --build-default-comment --associated-work-item $2
+	tr     = !git tfs rcheckin --build-default-comment --resolved-work-item $2
+	tc     = tfs ct --build-default-commit
+	tp     = tfs pull
+
+# vim: filetype=gitconfig:ts=8:sts=8:sw=8:noexpandtab
