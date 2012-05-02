@@ -18,6 +18,7 @@ set autoindent     " Indent next line the same
 set smartindent    " Indent more for known code blocks
 set smarttab       " TAB key uses shiftwidth at BOL
 set modeline       " Interpret modelines
+set modelines=3    " Look at five lines
 
 autocmd FileType html setlocal softtabstop=2 shiftwidth=2
 
