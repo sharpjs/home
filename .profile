@@ -24,3 +24,8 @@ if which -s less; then
   export PAGER
 fi
 
+# Setup Ruby environment
+if which -s rbenv; then
+    eval "$(rbenv init -)"
+fi
+
