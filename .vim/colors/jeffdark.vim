@@ -34,17 +34,17 @@ let g:colors_name = "jeffdark"
 highlight Normal          ctermfg=Gray        guifg=#B0B0B0     ctermbg=NONE        guibg=#101010
 highlight Folded          ctermfg=Gray        guifg=#777777     ctermbg=DarkGray    guibg=#202020
 highlight Cursor          ctermfg=NONE        guifg=#000000     ctermbg=NONE        guibg=#808080
-highlight CursorLine      ctermfg=NONE        guifg=NONE        ctermbg=DarkGray    guibg=#181818
-highlight CursorColumn    ctermfg=NONE        guifg=NONE        ctermbg=DarkGray    guibg=#181818
-highlight LineNr          ctermfg=DarkGray    guifg=#343434     ctermbg=NONE        guibg=#181818 
-highlight NonText         ctermfg=DarkGray    guifg=#343434     ctermbg=NONE        guibg=NONE
-highlight StatusLine      ctermfg=Black       guifg=#404040     ctermbg=Gray        guibg=#202020   cterm=bold  gui=bold
+highlight CursorLine      ctermfg=NONE        guifg=NONE        ctermbg=DarkGray    guibg=#080808
+highlight CursorColumn    ctermfg=NONE        guifg=NONE        ctermbg=DarkGray    guibg=#080808
+highlight LineNr          ctermfg=DarkGray    guifg=#282424     ctermbg=NONE        guibg=#000000 
+highlight NonText         ctermfg=DarkGray    guifg=#282424     ctermbg=NONE        guibg=#000000
+highlight StatusLine      ctermfg=Black       guifg=#585858     ctermbg=Gray        guibg=#282828   cterm=bold  gui=bold
 highlight StatusLineNC    ctermfg=Black       guifg=#383838     ctermbg=DarkGray    guibg=#181818   cterm=bold  gui=bold
+highlight VertSplit       ctermfg=Black       guifg=#181818     ctermbg=DarkGray    guibg=#181818   cterm=bold  gui=bold
 highlight ErrorMsg        ctermfg=Red         guifg=#FF0000     ctermbg=NONE        guibg=NONE
 highlight WarningMsg      ctermfg=Yellow      guifg=#CCCC00     ctermbg=NONE        guibg=NONE
 highlight MoreMsg         ctermfg=Green       guifg=#00FF00     ctermbg=NONE        guibg=NONE
 highlight link ModeMsg    WarningMsg
-"highlight VertSplit
 
 "highlight IncSearch
 "highlight MatchParen
@@ -78,12 +78,12 @@ highlight PmenuThumb      ctermfg=Gray        guifg=#F0F0F0     ctermbg=NONE    
 
 highlight Title           ctermfg=Gray        guifg=#F0F0F0     ctermbg=NONE        guibg=NONE
 highlight Visual          ctermfg=Gray        guifg=#FFFFFF     ctermbg=DarkBlue    guibg=#505064
-highlight VisualNOS       ctermfg=NONE        guifg=NONE        ctermbg=DarkGreen   guibg=#506450
+highlight VisualNOS       ctermfg=NONE        guifg=NONE        ctermbg=DarkGreen   guibg=#404040
 highlight WildMenu        ctermfg=NONE        guifg=#777777     ctermbg=DarkGray    guibg=#0F0F0F
 
 " Win32 specific style
 "highlight Menu
-"highlight Scrollbar
+highlight Scrollbar guifg=#808080 guibg=#000000
 "highlight Tooltip
 
 " Diff text style
@@ -94,7 +94,7 @@ highlight DiffDelete      ctermfg=DarkRed     guifg=#BE3232     ctermbg=NONE    
 
 " ===== Syntax Style =====
 
-highlight Comment           ctermfg=DarkGray    guifg=#646464     ctermbg=NONE      guibg=NONE
+highlight Comment           ctermfg=DarkGray    guifg=#606060     ctermbg=NONE      guibg=NONE
 
 " Constants
 highlight Constant          ctermfg=DarkRed     guifg=#6496C8

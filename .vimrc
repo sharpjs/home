@@ -17,9 +17,14 @@ set expandtab      " Insert spaces instead of tabs
 set autoindent     " Indent next line the same
 set smartindent    " Indent more for known code blocks
 set smarttab       " TAB key uses shiftwidth at BOL
+set modeline       " Interpret modelines
+
+autocmd FileType html setlocal softtabstop=2 shiftwidth=2
 
 if has('gui_running')
   set go-=T " Hide toolbar
+  set go-=r " Hide right scroll bar
+  set go-=L " Hide left  scroll bar
   if v:version > 700
     set cursorline   " Cursor crosshairs
     set cursorcolumn " Cursor crosshairs
