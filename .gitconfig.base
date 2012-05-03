@@ -30,4 +30,7 @@
 	tc     = tfs ct --build-default-commit
 	tp     = tfs pull
 
+	# Magic
+	cherry-patch = "!_() { ( cd \"$1\" && shift && git format-patch --stdout \"$@\" ) | git am --keep-cr --ignore-space-change --whitespace=nowarn; } ; _"
+
 # vim: filetype=gitconfig:ts=8:sts=8:sw=8:noexpandtab
