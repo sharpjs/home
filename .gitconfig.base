@@ -5,6 +5,7 @@
 	b      = branch
 	d      = diff
 	ci     = commit
+	ca     = commit --all
 	co     = checkout
 	dc     = diff --cached
 	m      = merge
@@ -27,7 +28,7 @@
 	# TFS
 	ta     = !git tfs rcheckin --build-default-comment --associated-work-item $2
 	tr     = !git tfs rcheckin --build-default-comment --resolved-work-item $2
-	tc     = tfs ct --build-default-commit
+	tc     = tfs ct --build-default-comment
 	tp     = tfs pull
 
 	# Magic
