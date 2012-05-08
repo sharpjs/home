@@ -1,0 +1,21 @@
+#!/bin/sh -ex
+cd ~/.home
+
+# Platform-specific stuff
+case `uname` in
+  FreeBSD)
+    platform=bsd
+    ;;
+  Darwin)
+    platform=mac
+    ;;
+  MINGW32*)
+    platform=win
+    ;;
+esac
+
+# .gitconfig
+for f in .gitconfig.base .gitconfig.$platform ~/.gitconfig.local; do
+  [ ! -r "$f" ] || { cat "$f"; echo; }
+done > ~/.gitconfig
+
