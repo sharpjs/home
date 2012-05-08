@@ -1,22 +1,27 @@
 [alias]
 	# Convenience
-	a      = add
-	aa     = add --all
-	b      = branch
-	d      = diff
-	ci     = commit
-	ca     = commit --all
-	co     = checkout
-	dc     = diff --cached
-	m      = merge
-	pom    = push origin master
-	pr     = pull --rebase
-	r      = rebase
-	ra     = rebase --abort
-	rc     = rebase --continue
-	ri     = rebase --interactive HEAD~10
-	s      = status
-	reboot = reset --hard
+	a        = add
+	aa       = add --all
+	b        = branch
+	ci       = commit
+	ca       = commit --all
+	co       = checkout
+	cob      = checkout -b
+	com      = checkout master
+	cow      = checkout work
+	d        = diff
+	dc       = diff --cached
+	m        = merge
+	mork     = merge work
+	pom      = push origin master
+	pr       = pull --rebase
+	r        = rebase
+	ra       = rebase --abort
+	rc       = rebase --continue
+	ri       = rebase --interactive HEAD~10
+	remaster = rebase master
+	repave   = reset --hard
+	s        = status
 
 	# Logs
 	lg     = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
