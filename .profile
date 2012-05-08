@@ -10,6 +10,9 @@ case `uname` in
   Darwin)
     PATH=~/.brew/bin:$PATH
     ;;
+  MINGW32*)
+    platform=win
+    ;;
 esac
 
 export PATH
