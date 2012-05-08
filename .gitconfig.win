@@ -12,3 +12,6 @@
 [difftool "diffmerge"]
 	cmd = \"C:/Program Files/SourceGear/Common/DiffMerge/sgdm.exe\" \"$LOCAL\" \"$REMOTE\" --title1=\"Head\" --title2=\"Mine\"
 	prompt = false
+
+# vim: filetype=gitconfig:ts=8:sts=8:sw=8:noexpandtab
+

@@ -16,6 +16,6 @@ esac
 
 # .gitconfig
 for f in .gitconfig.base .gitconfig.$platform ~/.gitconfig.local; do
-  [ ! -r "$f" ] || { cat "$f"; echo; }
+  [ ! -r "$f" ] || cat "$f"
 done > ~/.gitconfig
 
