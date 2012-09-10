@@ -1,5 +1,13 @@
+
 [core]
 	autocrlf = true
+
+[alias]
+        # TFS
+        ta = !git tfs rcheckin --build-default-comment --associated-work-item $2
+        tr = !git tfs rcheckin --build-default-comment --resolved-work-item $2
+        tc = tfs ct --build-default-comment
+        tp = tfs pull
 
 [merge]
 	tool = diffmerge

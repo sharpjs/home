@@ -3,11 +3,11 @@ cd ~/.home
 
 # Platform-specific stuff
 case `uname` in
-  FreeBSD)
-    platform=bsd
-    ;;
   Darwin)
     platform=mac
+    ;;
+  FreeBSD)
+    platform=bsd
     ;;
   MINGW32*)
     platform=win
@@ -15,7 +15,11 @@ case `uname` in
 esac
 
 # .gitconfig
-for f in .gitconfig.base .gitconfig.$platform ~/.gitconfig.local; do
-  [ ! -r "$f" ] || cat "$f"
-done > ~/.gitconfig
+(
+  for f in .gitconfig.base .gitconfig.$platform ~/.gitconfig.local; do
+    [ ! -r "$f" ] || grep -Fv '# vim:' "$f"
+  done
+  echo
+  grep -F '# vim:' .gitconfig.base
+) > ~/.gitconfig
 
