@@ -19,7 +19,6 @@ esac
   for f in .gitconfig.base .gitconfig.$platform ~/.gitconfig.local; do
     [ ! -r "$f" ] || grep -Fv '# vim:' "$f"
   done
-  echo
   grep -F '# vim:' .gitconfig.base
 ) > ~/.gitconfig
 

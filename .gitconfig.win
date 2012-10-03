@@ -1,3 +1,4 @@
+# .home/.gitconfig.win
 
 [core]
 	autocrlf = true
@@ -22,4 +23,3 @@
 	prompt = false
 
 # vim: filetype=gitconfig:ts=8:sts=8:sw=8:noexpandtab
-
