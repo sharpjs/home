@@ -1,34 +1,35 @@
 # Profile
 #
 
-PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:~/.bin
-
-case `uname` in
+case "$(uname)" in
   FreeBSD)
+    PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:~/.bin
     umask 077
     ;;
   Darwin)
-    PATH=~/.brew/bin:$PATH
+    PATH=~/.brew/bin:$PATH:~/.bin
     ;;
   MINGW32*)
-    platform=win
+    PATH=$PATH:~/.bin
     ;;
 esac
 
 export PATH
 
-if which -s vim; then
+# Choose editor
+if [ "$(which vim)" ]; then
   EDITOR=vim
   export EDITOR
 fi
 
-if which -s less; then
+# Choose pager
+if [ "$(which less)" ]; then
   PAGER=less
   export PAGER
 fi
 
-# Setup Ruby environment
-if which -s rbenv; then
+# Set up Ruby environment
+if [ "$(which rbenv)" ]; then
     eval "$(rbenv init -)"
 fi
 
