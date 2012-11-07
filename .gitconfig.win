@@ -5,10 +5,9 @@
 
 [alias]
         # TFS
-        ta = !git tfs rcheckin --build-default-comment --associated-work-item $2
-        tr = !git tfs rcheckin --build-default-comment --resolved-work-item $2
-        tc = tfs ct --build-default-comment
-        tp = tfs pull
+        ta = "!f() { git tf checkin --deep \"${@/#/--associate=}\"; }; f"
+        ta = "!f() { git tf checkin --deep \"${@/#/--resolve=}\"; }; f"
+        tp = tf pull --deep --rebase
 
 [merge]
 	tool = diffmerge
