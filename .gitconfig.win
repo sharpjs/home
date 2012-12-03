@@ -6,7 +6,7 @@
 [alias]
         # TFS
         ta = "!f() { git tf checkin --deep \"${@/#/--associate=}\"; }; f"
-        ta = "!f() { git tf checkin --deep \"${@/#/--resolve=}\"; }; f"
+        tr = "!f() { git tf checkin --deep \"${@/#/--resolve=}\"; }; f"
         tp = tf pull --deep --rebase
 
 [merge]
