@@ -4,6 +4,9 @@
 	autocrlf = true
 
 [alias]
+	# .NET / Visual Studio
+	cl = clean -xfd -e '*.suo' -e '*.user' -e 'packages/'
+
         # TFS
         ta = "!f() { git tf checkin --deep \"${@/#/--associate=}\"; }; f"
         tr = "!f() { git tf checkin --deep \"${@/#/--resolve=}\"; }; f"
