@@ -10,6 +10,7 @@ case "$(uname)" in
     PATH=~/.brew/bin:$PATH:~/.bin
     ;;
   MINGW32*)
+    [ "`pwd | tr [:upper:] [:lower:]`" != /c/windows/system32 ] || cd
     PATH=$PATH:~/.bin
     ;;
 esac
