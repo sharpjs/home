@@ -1,0 +1,25 @@
+#!/usr/bin/env sh -e
+
+name=$1
+
+[ -n "$name" ] || {
+    echo "Usage: $0 name"
+    exit 1
+}
+
+echo Generating private key...
+openssl genrsa -out "$name".key 1024
+echo
+
+echo Generating certificate...
+openssl req -new -x509 -key "$name".key -out "$name".crt -days 3653
+echo
+
+echo Packaging cert/key in PKCS\#12 file...
+openssl pkcs12 -export -in "$name".crt -inkey "$name".key -out "$name".p12 -password pass:
+echo
+
+echo Done
+echo "Private Key: $name.key (PEM format)"
+echo "Certificate: $name.crt (PEM format)"
+echo "Combined:    $name.p12 (PCKS#12 format)"
