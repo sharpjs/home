@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 #
 # Convert: QuickBooks Online Payroll Detail Report
 #      to: Xero Accounts Payable Invoices
@@ -165,7 +165,7 @@ class Input
 
   def next_amount
     self.next and
-    @text.start_with? '$' and
+    @text =~ /^-?\$/ and
     @text.gsub! /[$,]/, ''
   end
 end
