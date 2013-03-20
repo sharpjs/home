@@ -19,31 +19,32 @@ let g:colors_name = "jeffdark"
 " 4	    1	    DarkRed
 " 5	    5	    DarkMagenta
 " 6	    3	    Brown
-" 7	    7	    Gray,    LightGray
+" 7	    7	    Gray
 
 " 8	    0*	    DarkGray
-" 9	    4*	    Blue,    LightBlue
-" 10	    2*	    Green,   LightGreen
-" 11	    6*	    Cyan,    LightCyan
-" 12	    1*	    Red,     LightRed
-" 13	    5*	    Magenta, LightMagenta
-" 14	    3*	    Yellow,  LightYellow
+" 9	    4*	    Blue
+" 10	    2*	    Green
+" 11	    6*	    Cyan
+" 12	    1*	    Red
+" 13	    5*	    Magenta
+" 14	    3*	    Yellow
 " 15	    7*	    White
 
 " Text and message style
-highlight Normal          ctermfg=Gray        guifg=#B0B0B0     ctermbg=NONE        guibg=#101010
-highlight Folded          ctermfg=Gray        guifg=#777777     ctermbg=DarkGray    guibg=#202020
-highlight Cursor          ctermfg=NONE        guifg=#000000     ctermbg=NONE        guibg=#808080
-highlight CursorLine      ctermfg=NONE        guifg=NONE        ctermbg=DarkGray    guibg=#080808
-highlight CursorColumn    ctermfg=NONE        guifg=NONE        ctermbg=DarkGray    guibg=#080808
-highlight LineNr          ctermfg=DarkGray    guifg=#282424     ctermbg=NONE        guibg=#000000 
-highlight NonText         ctermfg=DarkGray    guifg=#282424     ctermbg=NONE        guibg=#000000
-highlight StatusLine      ctermfg=Black       guifg=#585858     ctermbg=Gray        guibg=#282828   cterm=bold  gui=bold
-highlight StatusLineNC    ctermfg=Black       guifg=#383838     ctermbg=DarkGray    guibg=#181818   cterm=bold  gui=bold
-highlight VertSplit       ctermfg=Black       guifg=#181818     ctermbg=DarkGray    guibg=#181818   cterm=bold  gui=bold
-highlight ErrorMsg        ctermfg=Red         guifg=#FF0000     ctermbg=NONE        guibg=NONE
-highlight WarningMsg      ctermfg=Yellow      guifg=#CCCC00     ctermbg=NONE        guibg=NONE
-highlight MoreMsg         ctermfg=Green       guifg=#00FF00     ctermbg=NONE        guibg=NONE
+highlight Normal          ctermfg=Gray        guifg=#B0B0B0  ctermbg=NONE        guibg=#101010
+highlight Folded          ctermfg=DarkGray    guifg=#524E49  ctermbg=NONE        guibg=#080808
+highlight Cursor          ctermfg=NONE        guifg=#000000  ctermbg=NONE        guibg=#808080
+highlight CursorLine      ctermfg=NONE        guifg=NONE     ctermbg=DarkGray    guibg=#080808
+highlight CursorColumn    ctermfg=NONE        guifg=NONE     ctermbg=DarkGray    guibg=#080808
+highlight CursorLineNr    ctermfg=Gray        guifg=#524E49  ctermbg=NONE        guibg=#000000 
+highlight LineNr          ctermfg=DarkGray    guifg=#282624  ctermbg=NONE        guibg=#000000 
+highlight NonText         ctermfg=DarkGray    guifg=#282624  ctermbg=NONE        guibg=#000000
+highlight StatusLine      ctermfg=Black       guifg=#585858  ctermbg=Gray        guibg=#282828  cterm=bold  gui=bold
+highlight StatusLineNC    ctermfg=Black       guifg=#383838  ctermbg=DarkGray    guibg=#181818  cterm=bold  gui=bold
+highlight VertSplit       ctermfg=Black       guifg=#181818  ctermbg=DarkGray    guibg=#181818  cterm=bold  gui=bold
+highlight ErrorMsg        ctermfg=Red         guifg=#FF0000  ctermbg=NONE        guibg=NONE
+highlight WarningMsg      ctermfg=Yellow      guifg=#CCCC00  ctermbg=NONE        guibg=NONE
+highlight MoreMsg         ctermfg=Green       guifg=#00FF00  ctermbg=NONE        guibg=NONE
 highlight link ModeMsg    WarningMsg
 
 "highlight IncSearch
@@ -191,7 +192,7 @@ highlight rubyPredefinedConstant    guifg=#DA4939
 highlight rubyPseudoVariable        guifg=#FFC66D
 highlight rubyStringDelimiter       guifg=#A5C261
 
-" Style for XML and (X)HTML Syntax
+" Style for XML and HTML Syntax
 highlight xmlTag                    guifg=#E8BF6A
 highlight xmlTagName                guifg=#E8BF6A
 highlight xmlEndTag                 guifg=#E8BF6A

@@ -1,6 +1,6 @@
 " VIM Configuration
 
-colorscheme jeffdark
+colorscheme desert " jeffdark
 syntax on          " Use syntax highlighting
 set number         " Line numbers
 set laststatus=2   " Always show status line
