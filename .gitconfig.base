@@ -38,6 +38,7 @@
 	trace  = log --follow -p
 
 	# Magic
+	loc = "!git grep -I --name-only -z '' | xargs -0 wc -l | sort"
 	cherry-patch = "!_() { ( cd \"$1\" && shift && git format-patch --stdout \"$@\" ) | git am --keep-cr --ignore-space-change --whitespace=nowarn; } ; _"
 
 # vim: filetype=gitconfig:ts=8:sts=8:sw=8:noexpandtab
