@@ -1,0 +1,22 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Exceptions to LF normalization
+*.csv  text eol=crlf
+*.fmt  text eol=crlf
+
+# Exceptions from text auto detection
+*.jpg  binary
+*.png  binary
+*.gif  binary
+*.tdf  binary
+
+# Visual Studio diff
+*.cs   diff=csharp
+
+# Standard msysgit diff
+*.doc  diff=astextplain
+*.docx diff=astextplain
+*.dot  diff=astextplain
+*.pdf  diff=astextplain
+*.rtf  diff=astextplain
