@@ -4,6 +4,9 @@
         name  = Jeff Sharp
         email = jeff.sharp@git
 
+[push]
+	default = simple
+
 [alias]
 	# Convenience
 	a        = add
@@ -18,6 +21,7 @@
 	cp       = cherry-pick -ex
 	d        = diff
 	dc       = diff --cached
+	f        = fetch --all --prune
 	m        = merge
 	mork     = merge work
 	pom      = push origin master
