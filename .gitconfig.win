@@ -7,19 +7,25 @@
 	# .NET / Visual Studio
 	cl = clean -xfd -e '*.suo' -e '*.user' -e 'packages/'
 
-        # TFS
-        ta = "!f() { git tf checkin --deep \"${@/#/--associate=}\"; }; f"
-        tr = "!f() { git tf checkin --deep \"${@/#/--resolve=}\"; }; f"
-        tp = tf pull --deep --rebase
+# TFS
+	ta = "!f() { git tf checkin --deep \"${@/#/--associate=}\"; }; f"
+	tr = "!f() { git tf checkin --deep \"${@/#/--resolve=}\"; }; f"
+	tp = tf pull --deep --rebase
 
 [merge]
-	tool = diffmerge
+	tool = bc3
+[mergetool]
+	keepBackup = false
+[mergetool "bc3"]
+	path = "C:/Program Files (x86)/Beyond Compare 3/BComp.exe"
 [mergetool "diffmerge"]
 	cmd = \"C:/Program Files/SourceGear/Common/DiffMerge/sgdm.exe\" --merge  \"$LOCAL\" \"$BASE\" \"$REMOTE\" --result=\"$MERGED\" --title1=\"Head\" --title2=\"Merged: $MERGED\" --title3=\"Mine\"
 	trustExitCode = false
 
 [diff]
-	tool = diffmerge
+	tool = bc3
+[difftool "bc3"]
+	path = "C:/Program Files (x86)/Beyond Compare 3/BComp.exe"
 [difftool "diffmerge"]
 	cmd = \"C:/Program Files/SourceGear/Common/DiffMerge/sgdm.exe\" \"$LOCAL\" \"$REMOTE\" --title1=\"Head\" --title2=\"Mine\"
 	prompt = false
