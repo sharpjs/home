@@ -12,6 +12,7 @@
 	a        = add
 	aa       = add --all
 	b        = branch
+	bl       = branch --all -vv
 	ci       = commit
 	ca       = commit --all
 	co       = checkout
