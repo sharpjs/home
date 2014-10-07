@@ -27,8 +27,11 @@ if has('gui_running')
   set go-=r " Hide right scroll bar
   set go-=L " Hide left  scroll bar
   if v:version > 700
-    set cursorline   " Cursor crosshairs
-    set cursorcolumn " Cursor crosshairs
+    " set cursorline   " Cursor crosshairs
+    " set cursorcolumn " Cursor crosshairs
   endif
 endif
+
+" Don't move 1 char left when exiting insert mode
+au InsertLeave * call cursor([getpos('.')[1], getpos('.')[2]+1])
 
