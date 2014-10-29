@@ -1,0 +1,13 @@
+" ViEmu Configuration
+
+" Type jk to quick-exit from insert mode
+inoremap jk <Esc>
+
+" Type Enter to insert new line above/below
+nnoremap <S-Enter> O<Esc>j
+nnoremap <Enter>   o<Esc>
+
+" Join/krack comma-separated lists
+noremap <C-J> :s/,\?\s*\r\?\n.\@=/, /<CR>
+noremap <C-K> :s/,\@<=\s*/\r/g<CR>
+
