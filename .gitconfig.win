@@ -17,7 +17,7 @@
 [mergetool]
 	keepBackup = false
 [mergetool "bc3"]
-	path = "C:/Program Files (x86)/Beyond Compare 3/BComp.exe"
+	path = "C:/Program Files (x86)/Beyond Compare 4/BComp.exe"
 [mergetool "diffmerge"]
 	cmd = \"C:/Program Files/SourceGear/Common/DiffMerge/sgdm.exe\" --merge  \"$LOCAL\" \"$BASE\" \"$REMOTE\" --result=\"$MERGED\" --title1=\"Head\" --title2=\"Merged: $MERGED\" --title3=\"Mine\"
 	trustExitCode = false
@@ -25,7 +25,7 @@
 [diff]
 	tool = bc3
 [difftool "bc3"]
-	path = "C:/Program Files (x86)/Beyond Compare 3/BComp.exe"
+	path = "C:/Program Files (x86)/Beyond Compare 4/BComp.exe"
 [difftool "diffmerge"]
 	cmd = \"C:/Program Files/SourceGear/Common/DiffMerge/sgdm.exe\" \"$LOCAL\" \"$REMOTE\" --title1=\"Head\" --title2=\"Mine\"
 	prompt = false

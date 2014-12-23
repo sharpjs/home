@@ -4,6 +4,9 @@
         name  = Jeff Sharp
         email = jeff.sharp@git
 
+[merge]
+	defaultToUpstream = true
+
 [push]
 	default = simple
 
@@ -25,8 +28,6 @@
 	f        = fetch --all --prune
 	m        = merge
 	mork     = merge work
-	pom      = push origin master
-	pr       = pull --rebase
 	r        = rebase
 	ra       = rebase --abort
 	rc       = rebase --continue
@@ -36,10 +37,9 @@
 	s        = status
 
 	# Logs
-	lg     = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
-	lga    = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --all
-	lr     = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --max-count=15
-	lra    = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --max-count=15 --all
+	lg     = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date-order
+	lga    = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date-order --all
+	me     = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date-order --cherry master..HEAD
 	trace  = log --follow -p
 
 	# Magic
