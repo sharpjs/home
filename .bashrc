@@ -23,7 +23,7 @@ alias ll='ls -FAl'
 export CLICOLOR=1
 
 # Git Stuff
-_git_ps1() {
+_js_git_ps1() {
   local b="$(git symbolic-ref HEAD 2>/dev/null)"
   if [ -n "$b" ]; then
     echo "  (${b##refs/heads/})"
@@ -31,7 +31,7 @@ _git_ps1() {
 }
 
 # Prompt
-export PS1='___________________________________________________________________________________________________\n\u@\h  \w$(_git_ps1)  #\! (\j bg)\n\$ '
+export PS1='___________________________________________________________________________________________________\n\u@\h  \w`_js_git_ps1`  #\! (\j bg)\n\$ '
 
 SSH_ENV="$HOME/.ssh/environment"
 
