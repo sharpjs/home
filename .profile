@@ -30,7 +30,7 @@ if [ "$(which less)" ]; then
 fi
 
 # Set up Ruby environment
-if [ "$(which rbenv)" ]; then
+if [ "$(which rbenv 2>/dev/null)" ]; then
     eval "$(rbenv init -)"
 fi
 
