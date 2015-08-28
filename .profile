@@ -7,7 +7,7 @@ case "$(uname)" in
     umask 077
     ;;
   Darwin)
-    PATH=~/.brew/bin:$PATH:~/.bin
+    PATH=$PATH:~/.bin
     ;;
   MINGW32*)
     [ "`pwd | tr [:upper:] [:lower:]`" != /c/windows/system32 ] || cd
