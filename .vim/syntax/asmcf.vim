@@ -21,7 +21,7 @@ syn keyword asmcfReg        sp fp pc ccr sr vbr cacr acr0 acr1 rambar mbar bc
 syn keyword asmcfReg        acc macsr mask
 
 " Opcodes
-syn match   asmcfOpcodeArea "\v(^|[;]) *\zs\a[a-z0-9\._]*\ze(\s|$)"
+syn match   asmcfOpcodeArea "\v(^|;) *\zs\a[a-z0-9\._$]*\ze(\s|$)"
   \ contains=asmcfOpcode,asmcfDirective oneline
 
 syn match   asmcfOpcode     "\v<add[aiqx]?(\.?l)?>"         contained
