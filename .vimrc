@@ -23,7 +23,7 @@ autocmd FileType html setlocal softtabstop=2 shiftwidth=2
 autocmd FileType ruby setlocal softtabstop=2 shiftwidth=2
 
 if has('gui_running')
-  colorscheme industry " or jeffdark
+  colorscheme slate " or jeffdark
   set go-=T " Hide toolbar
   set go-=r " Hide right scroll bar
   set go-=L " Hide left  scroll bar
