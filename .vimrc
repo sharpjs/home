@@ -56,6 +56,13 @@ endif
 " Don't move 1 char left when exiting insert mode
 au InsertLeave * call cursor([getpos('.')[1], getpos('.')[2]+1])
 
+" Use system clipboard instead of unnamed register
+if has('unnamedplus')
+  set clipboard& clipboard+=unnamedplus
+else
+  set clipboard& clipboard+=unnamed
+endif
+
 " Use jk instead of escape to exist insert mode
 inoremap jk <Esc>
 
