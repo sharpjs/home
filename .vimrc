@@ -43,7 +43,7 @@ autocmd FileType ruby setlocal softtabstop=2 shiftwidth=2
 autocmd FileType vim  setlocal softtabstop=2 shiftwidth=2
 
 if has('gui_running')
-  colorscheme slate " or jeffdark
+  colorscheme monokai
   set go-=T " Hide toolbar
   set go-=r " Hide right scroll bar
   set go-=L " Hide left  scroll bar
