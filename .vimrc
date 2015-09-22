@@ -40,6 +40,7 @@ set modelines=3    " Look at three lines
 
 autocmd FileType html setlocal softtabstop=2 shiftwidth=2
 autocmd FileType ruby setlocal softtabstop=2 shiftwidth=2
+autocmd FileType vim  setlocal softtabstop=2 shiftwidth=2
 
 if has('gui_running')
   colorscheme slate " or jeffdark
