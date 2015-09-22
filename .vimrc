@@ -1,4 +1,23 @@
-" VIM Configuration
+" Vim Configuration
+
+set nocompatible    " Required for Vundle
+filetype off        " Required for Vundle
+
+" Vundle
+if finddir("~/.vim/bundle/Vundle.vim") != ''
+  set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
+
+  Plugin 'VundleVim/Vundle.vim' " Required
+  Plugin 'lsdr/monokai'
+  Plugin 'rust-lang/rust.vim'
+  Plugin 'vim-scripts/alex.vim'
+  Plugin 'vim-scripts/happy.vim'
+
+  call vundle#end()
+else
+  echoerr "Vundle is not installed."
+endif
 
 syntax on          " Use syntax highlighting
 set number         " Line numbers
