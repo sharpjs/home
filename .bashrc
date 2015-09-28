@@ -30,6 +30,13 @@ _js_git_ps1() {
   fi
 }
 
+# Completions
+if complete | grep -qv _git_; then
+  GIT_COMPLETIONS=/usr/local/etc/bash_completion.d/git-completion.bash
+  [ -r "$GIT_COMPLETIONS" ] && . "$GIT_COMPLETIONS"
+  unset GIT_COMPLETIONS
+fi
+
 # Prompt
 export PS1='___________________________________________________________________________________________________\n\u@\h  \w`_js_git_ps1`  #\! (\j bg)\n\$ '
 
@@ -80,3 +87,4 @@ else
 fi
 
 echo 'Executed .bashrc'
+
