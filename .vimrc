@@ -53,8 +53,8 @@ if has('gui_running')
   endif
 endif
 
-" Don't move 1 char left when exiting insert mode
-au InsertLeave * call cursor([getpos('.')[1], getpos('.')[2]+1])
+" Don't autocomplete these files
+set wildignore=*.o,*.hi,*~,*.hi,Lexer.hs,Parser.hs
 
 " Use system clipboard instead of unnamed register
 if has('unnamedplus')
@@ -62,6 +62,9 @@ if has('unnamedplus')
 else
   set clipboard& clipboard+=unnamed
 endif
+
+" Don't move 1 char left when exiting insert mode
+au InsertLeave * call cursor([getpos('.')[1], getpos('.')[2]+1])
 
 " Use jk instead of escape to exist insert mode
 inoremap jk <Esc>
