@@ -86,5 +86,8 @@ else
   fi
 fi
 
+# Source local startup script
+[ -r ~/.bashrc_local ] && . ~/.bashrc_local
+
 echo 'Executed .bashrc'
 
