@@ -68,7 +68,9 @@ function test_identities {
 }
 
 # check for running ssh-agent with proper $SSH_AGENT_PID
-if [ -n "$SSH_AGENT_PID" ]; then
+if [ "$(uname)" = "Darwin" ]; then
+  : # OS X uses Keychain instead of ssh-agent; do nothing here
+elif [ -n "$SSH_AGENT_PID" ]; then
   ps -ef | grep "$SSH_AGENT_PID" | grep ssh-agent > /dev/null
   if [ $? -eq 0 ]; then
     test_identities
