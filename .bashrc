@@ -36,6 +36,7 @@ if complete | grep -qv _git_; then
   [ -r "$GIT_COMPLETIONS" ] && . "$GIT_COMPLETIONS"
   unset GIT_COMPLETIONS
 fi
+bind 'set completion-ignore-case on'
 
 # Prompt
 export PS1='___________________________________________________________________________________________________\n\u@\h  \w`_js_git_ps1`  #\! (\j bg)\n\$ '
