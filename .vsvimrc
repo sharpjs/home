@@ -1,0 +1,18 @@
+" VsVim Configuration
+
+" https://github.com/jaredpar/VsVim/wiki/Settings-Reference
+
+" Use system clipboard instead of unnamed register
+set clipboard=unnamed
+
+" Use jk instead of escape to exist insert mode
+inoremap jk <Esc>
+
+" Use Enter to insert new lines
+nnoremap <S-Enter> O<Esc>j
+nnoremap <CR> o<Esc>
+
+" Join/krack comma-separated lists
+noremap <C-J> :s/,\?\s*\r\?\n.\@=/, /<CR>
+noremap <C-K> :s/,\@<=\s*/\r/g<CR>
+
