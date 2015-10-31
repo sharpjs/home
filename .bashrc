@@ -14,13 +14,26 @@ HISTSIZE=1000000                # Keep 1,000,000 entries in process memory
 HISTCONTROL=ignoreboth          # Ignore duplicates and cms starting with space
 HISTIGNORE='ls:bg:fg:history'   # Ignore specific commands
 
+# Colors
+export CLICOLOR=1
+
 # Alias
 alias ls='ls -F'
 alias la='ls -FA'
 alias ll='ls -FAl'
 
-# Colors
-export CLICOLOR=1
+# Homebrew Stuff
+if [ "$(uname)" = "Darwin" ]; then
+  function brew-why {
+    for f in $(brew list); do
+      echo -n "$f:"
+      for u in $(brew uses --installed --recursive --skip-build $f); do
+        echo -n " $u"
+      done
+      echo
+    done | column -t -s : 
+  }
+fi
 
 # Git Stuff
 _js_git_ps1() {
