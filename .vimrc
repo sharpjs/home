@@ -42,6 +42,7 @@ set splitright     " Open vsplits to right of current
 
 autocmd FileType html setlocal softtabstop=2 shiftwidth=2
 autocmd FileType ruby setlocal softtabstop=2 shiftwidth=2
+autocmd FileType sh   setlocal softtabstop=2 shiftwidth=2
 autocmd FileType vim  setlocal softtabstop=2 shiftwidth=2
 
 if has('gui_running')
