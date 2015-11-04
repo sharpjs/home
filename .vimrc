@@ -37,6 +37,8 @@ set smartindent    " Indent more for known code blocks
 set smarttab       " TAB key uses shiftwidth at BOL
 set modeline       " Interpret modelines
 set modelines=3    " Look at three lines
+set splitbelow     " Open splits below the current
+set splitright     " Open vsplits to right of current
 
 autocmd FileType html setlocal softtabstop=2 shiftwidth=2
 autocmd FileType ruby setlocal softtabstop=2 shiftwidth=2
