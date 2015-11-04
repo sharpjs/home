@@ -44,10 +44,13 @@ _js_git_ps1() {
 }
 
 # Completions
-if complete | grep -qv _git_; then
-  GIT_COMPLETIONS=/usr/local/etc/bash_completion.d/git-completion.bash
-  [ -r "$GIT_COMPLETIONS" ] && . "$GIT_COMPLETIONS"
-  unset GIT_COMPLETIONS
+if [ ! "$CMPL_CARGO" ]; then
+  CMPL_CARGO=/usr/local/etc/bash_completion.d/cargo
+  [ -r "$CMPL_CARGO" ] && . "$CMPL_CARGO" && export CMPL_CARGO
+fi
+if [ ! "$CMPL_GIT" ]; then
+  CMPL_GIT=/usr/local/etc/bash_completion.d/git-completion.bash
+  [ -r "$CMPL_GIT" ] && . "$CMPL_GIT" && export CMPL_GIT
 fi
 bind 'set completion-ignore-case on'
 
