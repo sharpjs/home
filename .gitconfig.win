@@ -16,7 +16,7 @@
 	tool = bc
 [mergetool]
 	keepBackup = false
-[mergetool "bc3"]
+[mergetool "bc"]
 	path = "C:/Program Files/Beyond Compare 4/BComp.exe"
 [mergetool "diffmerge"]
 	cmd = \"C:/Program Files/SourceGear/Common/DiffMerge/sgdm.exe\" --merge  \"$LOCAL\" \"$BASE\" \"$REMOTE\" --result=\"$MERGED\" --title1=\"Head\" --title2=\"Merged: $MERGED\" --title3=\"Mine\"
@@ -24,7 +24,7 @@
 
 [diff]
 	tool = bc
-[difftool "bc3"]
+[difftool "bc"]
 	path = "C:/Program Files/Beyond Compare 4/BComp.exe"
 [difftool "diffmerge"]
 	cmd = \"C:/Program Files/SourceGear/Common/DiffMerge/sgdm.exe\" \"$LOCAL\" \"$REMOTE\" --title1=\"Head\" --title2=\"Mine\"
