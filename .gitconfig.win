@@ -5,7 +5,7 @@
 
 [alias]
 	# .NET / Visual Studio
-	cl = clean -xfd -e '*.suo' -e '*.user' -e '.vs/' -e 'packages/'
+	cl = clean -xfd -e '*.suo' -e '*.user' -e '.vs/' -e 'packages/' -e 'node_modules/'
 
 # TFS
 	ta = "!f() { git tf checkin --deep \"${@/#/--associate=}\"; }; f"
