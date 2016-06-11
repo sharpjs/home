@@ -6,6 +6,10 @@
 
 [merge]
 	defaultToUpstream = true
+	log = 1000
+
+[fetch]
+	prune = true
 
 [push]
 	default = simple
@@ -25,16 +29,17 @@
 	cp       = cherry-pick -ex
 	d        = diff
 	dc       = diff --cached
-	f        = fetch --all --prune
-	m        = merge
-	mork     = merge work
+	f        = fetch --all
+	m        = merge --no-edit
 	r        = rebase
 	ra       = rebase --abort
 	rc       = rebase --continue
 	ri       = rebase --interactive HEAD~10
-	remaster = rebase master
-	repave   = reset --hard
 	s        = status
+	sub      = submodule update --init --rebase --recursive
+	subup    = submodule update --init --rebase --recursive --remote
+	up       = pull --all --rebase
+	upm      = pull --all --no-edit
 
 	# Logs
 	lg     = log --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date-order
