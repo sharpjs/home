@@ -9,6 +9,7 @@ if finddir("~/.vim/bundle/Vundle.vim") != ''
   call vundle#begin()
 
   Plugin 'VundleVim/Vundle.vim' " Required
+  Plugin 'junegunn/vim-easy-align'
   Plugin 'lsdr/monokai'
   Plugin 'rust-lang/rust.vim'
   Plugin 'vim-scripts/alex.vim'
@@ -75,6 +76,11 @@ inoremap jk <Esc>
 " Use Enter to insert new lines
 nnoremap <S-Enter> O<Esc>j
 nnoremap <CR> o<Esc>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Join/krack comma-separated lists
 noremap <C-J> :s/,\?\s*\r\?\n.\@=/, /<CR>
