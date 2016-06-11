@@ -36,10 +36,12 @@ set expandtab      " Insert spaces instead of tabs
 set autoindent     " Indent next line the same
 set smartindent    " Indent more for known code blocks
 set smarttab       " TAB key uses shiftwidth at BOL
+set nowrap         " Don't wrap lines
 set modeline       " Interpret modelines
 set modelines=3    " Look at three lines
 set splitbelow     " Open splits below the current
 set splitright     " Open vsplits to right of current
+set visualbell     " Turns off annoying dings
 
 autocmd FileType html setlocal softtabstop=2 shiftwidth=2
 autocmd FileType ruby setlocal softtabstop=2 shiftwidth=2
