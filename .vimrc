@@ -42,6 +42,8 @@ set modelines=3    " Look at three lines
 set splitbelow     " Open splits below the current
 set splitright     " Open vsplits to right of current
 set visualbell     " Turns off annoying dings
+set nobackup       " Do not write backup (foo~) files on save
+set noswapfile     " Do not create swap (foo.swp) while editing
 
 autocmd FileType html setlocal softtabstop=2 shiftwidth=2
 autocmd FileType ruby setlocal softtabstop=2 shiftwidth=2
