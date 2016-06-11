@@ -1,24 +1,14 @@
 " Vim Configuration
 
-set nocompatible    " Required for Vundle
-filetype off        " Required for Vundle
-
-" Vundle
-if finddir("~/.vim/bundle/Vundle.vim") != ''
-  set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
-
-  Plugin 'VundleVim/Vundle.vim' " Required
-  Plugin 'junegunn/vim-easy-align'
-  Plugin 'lsdr/monokai'
-  Plugin 'rust-lang/rust.vim'
-  Plugin 'vim-scripts/alex.vim'
-  Plugin 'vim-scripts/happy.vim'
-
-  call vundle#end()
-else
-  echoerr "Vundle is not installed."
-endif
+" Plugins
+" https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/plugged')
+  Plug 'junegunn/vim-easy-align'
+  Plug 'lsdr/monokai'
+  Plug 'rust-lang/rust.vim'
+  Plug 'vim-scripts/alex.vim'
+  Plug 'vim-scripts/happy.vim'
+call plug#end()
 
 syntax on          " Use syntax highlighting
 set number         " Line numbers
