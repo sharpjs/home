@@ -1,4 +1,7 @@
 # Mac OS X
 .DS_Store
+
+# Vim
+*.sw?
 .vim/bundle/
 
