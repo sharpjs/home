@@ -45,10 +45,6 @@ if has('gui_running')
   set go-=T " Hide toolbar
   set go-=r " Hide right scroll bar
   set go-=L " Hide left  scroll bar
-  if v:version > 700
-    " set cursorline   " Cursor crosshairs
-    " set cursorcolumn " Cursor crosshairs
-  endif
 endif
 
 " Don't autocomplete these files
