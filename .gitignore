@@ -6,3 +6,6 @@
 /.vim/autoload/plug.vim
 /.vim/plugged/
 
+# Local
+/.bin/diff-highlight
+
