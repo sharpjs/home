@@ -22,3 +22,6 @@ esac
   grep -F '# vim:' .gitconfig.base
 ) > ~/.gitconfig
 
+# Stop vim from seeing modelines above.
+# vim:
+
