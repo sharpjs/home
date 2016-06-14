@@ -4,20 +4,41 @@
         name  = Jeff Sharp
         email = jeff.sharp@git
 
-[merge]
-	defaultToUpstream = true
-	log = 1000
-
 [fetch]
 	prune = true
 
 [push]
 	default = simple
 
+[diff]
+	# Enable an experimental heuristic that shifts the hunk boundary
+	# in an attempt to make the resulting patch easier to read.
+	compactionHeuristic = true
+
+[merge]
+	defaultToUpstream = true
+	log = 1000
+
+[submodule]
+	# Specifies how many submodules are fetched/cloned at the same time.
+	fetchJobs = 4
+
+[pager]
+	# Enable change highlighting in most diffs.  Requires /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
+	log  = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+	show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+	diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+
+[interactive]
+	# Enable change highlighting in interactive staging.
+	diffFilter = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
+
 [alias]
 	# Convenience
 	a        = add
+	ai       = add --interactive
 	aa       = add --all
+	aai      = add --all --interactive
 	b        = branch
 	bl       = !git -p branch --all -vv
 	ci       = commit
