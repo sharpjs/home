@@ -45,6 +45,7 @@ if has('gui_running')
   set go-=T " Hide toolbar
   set go-=r " Hide right scroll bar
   set go-=L " Hide left  scroll bar
+  set guifont=SF\ Mono\ Light:h12
 endif
 
 " Don't autocomplete these files
