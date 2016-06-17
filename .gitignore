@@ -1,11 +1,4 @@
-# Mac OS X
-.DS_Store
-
-# Vim
-*.sw?
+/.bin/diff-highlight
 /.vim/autoload/plug.vim
 /.vim/plugged/
-
-# Local
-/.bin/diff-highlight
 

@@ -1,0 +1,33 @@
+# Global git ignore
+#
+# To install:
+#   $ ln -s .home/.gitignore_global ~/.gitignore
+#   $ git config --global core.excludesfile ~/.gitignore 
+
+# Vim
+*~
+*.sw?
+.netrwhist
+
+# Git-Related Files
+*.orig
+*.patch
+*.rej
+
+# Temporary Files
+*.log
+*.tmp
+*.InstallLog
+
+# macOS
+._*
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# vim: ft=conf
+

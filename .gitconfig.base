@@ -4,6 +4,9 @@
         name  = Jeff Sharp
         email = jeff.sharp@git
 
+[core]
+	excludesfile = ~/.gitignore
+
 [fetch]
 	prune = true
 
