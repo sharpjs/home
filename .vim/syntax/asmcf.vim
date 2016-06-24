@@ -1,7 +1,7 @@
 " Vim syntax file
-" Language:     ColdFire MCF5307 Assembler + GAS + CPP
+" Language:     ColdFire MCF5307 Assembler - ASPP/CPP/GAS toolchain
 " Maintainer:   Jeff Sharp
-" Last change:  2014 Sep 17
+" Last change:  2016 Jun 24
 "
 " This syntax file is based on the asm68k syntax file.
 
@@ -20,38 +20,44 @@ syn keyword asmcfReg        a0 a1 a2 a3 a4 a5 a6 a7 d0 d1 d2 d3 d4 d5 d6 d7
 syn keyword asmcfReg        sp fp pc ccr sr vbr cacr acr0 acr1 rambar mbar bc
 syn keyword asmcfReg        acc macsr mask
 
-" Opcodes
-syn match   asmcfOpcodeArea "\v(^|[;:])\s*\zs\a[a-z0-9._$]*\ze(\s|$)"
-  \ contains=asmcfOpcode,asmcfDirective oneline
+" " Macro definition
+" syn match   asmcfMacro      "\.macro\>"     contained
+" syn match   asmcfMacro      "\.endm\>"      contained
+" syn match   asmcfMacroParam "\\[0-9]"
 
-syn match   asmcfOpcode     "\v<\a[a-z0-9._$]*>"            contained
-
-syn match   asmcfDirective  "\v(^|[;:])\s*\zs\.[a-z0-9\._$]*\ze(\s|$)"
-  \ contains=asmcfMacro oneline
-
-" Macro definition
-syn match   asmcfMacro      "\.macro\>"     contained
-syn match   asmcfMacro      "\.endm\>"      contained
-" syn match asmcfMacroParam "\\[0-9]"
-
-" Labels
-syn match   asmcfLabel      "^\s*\zs[a-z_.][a-z0-9_.$]*\ze\s*:"
-syn match   asmcfLabel      "^\s*\zsL([a-z0-9_$]\+)\ze\s*:"
-syn match   asmcfLabel      "^\s*\zs\d\+$\?\ze\s*:"
+" Operands
+syn region  asmcfOperands   start="\v(\r?\n|;|//)@!" skip="\\\r\?\n" end="\v$|;|(//)@="
+    \                       contained contains=asmcfReg,asmcfOperator
 
 " Numbers
-syn match   decNumber       "\v<\d+>"
-syn match   hexNumber       "\v<0x\x+>"
-syn match   octNumber       "\v<0\o+>"
-syn match   binNumber       "\v<0b[01]+>"
+syn match   asmcfDecNumber  "\v<\d+>"                       containedin=asmcfOperands
+syn match   asmcfOctNumber  "\v<0\o+>"                      containedin=asmcfOperands
+syn match   asmcfHexNumber  "\v<0x\x+>"                     containedin=asmcfOperands
+syn match   asmcfBinNumber  "\v<0b[01]+>"                   containedin=asmcfOperands
 
 " Strings
-syn region  asmcfString     start=/"/ skip=/\\./ end=/"/
-syn match   asmcfCharacter  "'\\\?\_."
+syn region  asmcfString     start=/"/ skip=/\\\_./ end=/"/  containedin=asmcfOperands
+syn match   asmcfCharacter  "'\\\?\_."                      containedin=asmcfOperands
 
 " Operators
-syn match   asmcfOperator   "[-+*/%|&^!<>=#,\$]" " must come before
-syn match   asmcfOperator   "[=!]=\|>[=>]\|<[=<>]\|&&\|||"
+syn match   asmcfOperator   "[-+*/%|&^!<>=,\$]"             containedin=asmcfOperands
+syn match   asmcfOperator   "[=!]=\|>[=>]\|<[=<>]\|&&\|||"  containedin=asmcfOperands
+syn match   asmcfImmediate  "#"                             containedin=asmcfOperands
+syn match   asmcfAsppEscape "@"                             containedin=asmcfOperands
+
+" Symbols
+syn match   asmcfSymbol     "\v(\.|<[a-z_])[a-z0-9_.$]*"    containedin=asmcfOperands
+
+" Mnemonics
+syn match   asmcfMnemonic   "\v(\.|<[a-z_])[a-z0-9_.$]*"    nextgroup=asmcfOperands
+
+" Labels
+syn match   asmcfLabel      "\v(\.|<[a-z_])[a-z0-9_.$]*(::?|(\s+)?\=@=)"
+syn match   asmcfLabel      "\v<\d+\$?:"
+
+" Preprocessor
+syn region  asmcfPreProc    start="^#" skip="\\\r\?\n" end="$"
+    \                       contains=asmcfCommentLine,asmcfCommentBlock
 
 " Comments
 syn match   asmcfCommentLine    "//.*"                  contains=asmcfTodo
@@ -81,37 +87,45 @@ if version >= 508 || !exists("did_asmcf_syntax_inits")
   " The default methods for highlighting.  Can be overridden later
   " Comment Constant Error Identifier PreProc Special Statement Todo Type
   "
-  " Constant  Boolean Character Number String
+  " Constant    Boolean Character Number String
   " Identifier  Function
-  " PreProc  Define Include Macro PreCondit
-  " Special  Debug Delimiter SpecialChar SpecialComment Tag
-  " Statement  Conditional Exception Keyword Label Operator Repeat
-  " Type  StorageClass Structure Typedef
+  " PreProc     Define Include Macro PreCondit
+  " Special     Debug Delimiter SpecialChar SpecialComment Tag
+  " Statement   Conditional Exception Keyword Label Operator Repeat
+  " Type        StorageClass Structure Typedef
+
+  HiLink asmcfPreProc       PreProc
+  HiLink asmcfAsppEscape    SpecialChar
+
+  HiLink asmcfLabel         Label
+
+  HiLink asmcfMnemonic      Statement
+
+  HiLink asmcfBinNumber     Number
+  HiLink asmcfOctNumber     Number
+  HiLink asmcfDecNumber     Number
+  HiLink asmcfHexNumber     Number
+  HiLink asmcfString        String
+  HiLink asmcfCharacter     Character
+
+  HiLink asmcfReg           Keyword
+  HiLink asmcfSymbol        Identifier
+
+  HiLink asmcfOperator      Delimiter
+  HiLink asmcfImmediate     SpecialChar
+
+  HiLink asmcfInclude       Include
+  HiLink asmcfMacro         Macro
+  HiLink asmcfMacroParam    Keyword
+  HiLink asmcfDirective     Keyword
+  HiLink asmcfPreCond       Special
+  HiLink asmcfCond          Conditional
+  HiLink asmcfRepeat        Repeat
 
   HiLink asmcfComment       Comment
   HiLink asmcfCommentLine   Comment
   HiLink asmcfCommentBlock  Comment
   HiLink asmcfTodo          Todo
-  HiLink hexNumber          Number          " Constant
-  HiLink octNumber          Number          " Constant
-  HiLink binNumber          Number          " Constant
-  HiLink decNumber          Number          " Constant
- "HiLink asmcfImmediate     SpecialChar
- "HiLink asmcfSymbol        Constant
-  HiLink asmcfString        String          " Constant
-  HiLink asmcfCharacter     Character
-  HiLink asmcfOpcodeArea    Error
-  HiLink asmcfReg           Identifier
-  HiLink asmcfOperator      Identifier
-  HiLink asmcfInclude       Include         " PreProc
-  HiLink asmcfMacro         Macro           " PreProc
-  HiLink asmcfMacroParam    Keyword         " Statement
-  HiLink asmcfDirective     Keyword
-  HiLink asmcfPreCond       Special
-  HiLink asmcfOpcode        Statement
-  HiLink asmcfCond          Conditional     " Statement
-  HiLink asmcfRepeat        Repeat          " Statement
-  HiLink asmcfLabel         Type
 
   delcommand HiLink
 endif
