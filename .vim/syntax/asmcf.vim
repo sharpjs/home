@@ -95,11 +95,10 @@ if version >= 508 || !exists("did_asmcf_syntax_inits")
   " Type        StorageClass Structure Typedef
 
   HiLink asmcfPreProc       PreProc
-  HiLink asmcfAsppEscape    SpecialChar
 
   HiLink asmcfLabel         Label
 
-  HiLink asmcfMnemonic      Statement
+  HiLink asmcfMnemonic      Function
 
   HiLink asmcfBinNumber     Number
   HiLink asmcfOctNumber     Number
@@ -111,16 +110,9 @@ if version >= 508 || !exists("did_asmcf_syntax_inits")
   HiLink asmcfReg           Keyword
   HiLink asmcfSymbol        Identifier
 
-  HiLink asmcfOperator      Delimiter
+  HiLink asmcfOperator      Operator
   HiLink asmcfImmediate     SpecialChar
-
-  HiLink asmcfInclude       Include
-  HiLink asmcfMacro         Macro
-  HiLink asmcfMacroParam    Keyword
-  HiLink asmcfDirective     Keyword
-  HiLink asmcfPreCond       Special
-  HiLink asmcfCond          Conditional
-  HiLink asmcfRepeat        Repeat
+  HiLink asmcfAsppEscape    Exception
 
   HiLink asmcfComment       Comment
   HiLink asmcfCommentLine   Comment
