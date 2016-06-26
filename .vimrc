@@ -41,7 +41,7 @@ autocmd FileType sh   setlocal softtabstop=2 shiftwidth=2
 autocmd FileType vim  setlocal softtabstop=2 shiftwidth=2
 
 if has('gui_running')
-  colorscheme monokai
+  colorscheme cgdark
   set go-=T " Hide toolbar
   set go-=r " Hide right scroll bar
   set go-=L " Hide left  scroll bar
