@@ -23,7 +23,6 @@ syn keyword asmcfReg        acc macsr mask
 " " Macro definition
 " syn match   asmcfMacro      "\.macro\>"     contained
 " syn match   asmcfMacro      "\.endm\>"      contained
-" syn match   asmcfMacroParam "\\[0-9]"
 
 " Operands
 syn region  asmcfOperands   start="\v(\r?\n|;|//)@!" skip="\\\r\?\n" end="\v$|;|(//)@="
@@ -45,15 +44,14 @@ syn match   asmcfOperator   "[=!]=\|>[=>]\|<[=<>]\|&&\|||"  containedin=asmcfOpe
 syn match   asmcfImmediate  "#"                             containedin=asmcfOperands
 syn match   asmcfAsppEscape "@"                             containedin=asmcfOperands
 
-" Symbols
-syn match   asmcfSymbol     "\v(\.|<[a-z_])[a-z0-9_.$]*"    containedin=asmcfOperands
+syn match   asmcfMacroParam "\v\\(\(\)|(\.|[a-z_])[a-z0-9_.$]*)"   containedin=asmcfOperands
 
-" Mnemonics
-syn match   asmcfMnemonic   "\v(\.|<[a-z_])[a-z0-9_.$]*"    nextgroup=asmcfOperands
-
-" Labels
-syn match   asmcfLabel      "\v(\.|<[a-z_])[a-z0-9_.$]*(::?|(\s+)?\=@=)"
-syn match   asmcfLabel      "\v<\d+\$?:"
+" Identifiers
+let s:id = '(\\(\(\))?)?(\.|<[a-z_])([a-z0-9_.$]|\\(\.|[a-z_]|\(\)))*'
+exec 'syn match   asmcfSymbol     "\v'.s:id.'" containedin=asmcfOperands contains=asmcfMacroParam'
+exec 'syn match   asmcfMnemonic   "\v'.s:id.'"   nextgroup=asmcfOperands contains=asmcfMacroParam'
+exec 'syn match   asmcfLabel      "\v'.s:id.'(::?|(\s+)?\=@=)"           contains=asmcfMacroParam'
+exec 'syn match   asmcfLabel      "\v<\d+\$?:"'
 
 " Preprocessor
 syn region  asmcfPreProc    start="^#" skip="\\\r\?\n" end="$"
@@ -95,6 +93,7 @@ if version >= 508 || !exists("did_asmcf_syntax_inits")
   " Type        StorageClass Structure Typedef
 
   HiLink asmcfPreProc       PreProc
+  HiLink asmcfMacroParam    Macro
 
   HiLink asmcfLabel         Label
 
