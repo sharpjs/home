@@ -35,14 +35,6 @@ if [ "$(uname)" = "Darwin" ]; then
   }
 fi
 
-# Git Stuff
-_js_git_ps1() {
-  local b="$(git symbolic-ref HEAD 2>/dev/null)"
-  if [ -n "$b" ]; then
-    echo "  (${b##refs/heads/})"
-  fi
-}
-
 # Completions
 if [ ! "$CMPL_CARGO" ]; then
   CMPL_CARGO=/usr/local/etc/bash_completion.d/cargo
@@ -54,8 +46,18 @@ if [ ! "$CMPL_GIT" ]; then
 fi
 bind 'set completion-ignore-case on'
 
+# Git Stuff
+_js_git_ps1() {
+  local b="$(git symbolic-ref HEAD 2>/dev/null)"
+  if [ -n "$b" ]; then
+    echo "  (${b##refs/heads/})"
+  fi
+}
+
 # Prompt
-export PS1='___________________________________________________________________________________________________\n\u@\h  \w`_js_git_ps1`  #\! (\j bg)\n\$ '
+export PS1=\
+'___________________________________________________________________________________________________\n'\
+'\u@\h  \w`_js_git_ps1`  #\! (\j bg)\n\$ '
 
 # Check SSH agent health
 if [ ! "$SSH_AUTH_SOCK" ]; then
