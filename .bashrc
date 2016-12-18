@@ -1,8 +1,5 @@
 # Bash Startup Script for Interactive Shells
 
-# Don't run twice
-set | grep -q '\w$(_git_ps1)' && return
-
 # Systemwide Settings
 [ -r /etc/bashrc ] && . /etc/bashrc
 
@@ -11,7 +8,7 @@ shopt -s histappend             # Append to history file instead of overwriting
 shopt -s cmdhist                # Save multi-line commands as a single line
 HISTFILESIZE=1000000            # Keep 1,000,000 entries in the history file
 HISTSIZE=1000000                # Keep 1,000,000 entries in process memory
-HISTCONTROL=ignoreboth          # Ignore duplicates and cms starting with space
+HISTCONTROL=ignoreboth          # Ignore duplicates and cmds starting with space
 HISTIGNORE='ls:bg:fg:history'   # Ignore specific commands
 
 # Colors
