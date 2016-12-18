@@ -57,56 +57,39 @@ bind 'set completion-ignore-case on'
 # Prompt
 export PS1='___________________________________________________________________________________________________\n\u@\h  \w`_js_git_ps1`  #\! (\j bg)\n\$ '
 
-SSH_ENV="$HOME/.ssh/environment"
-
-# start the ssh-agent
-function start_agent {
-  echo "Initializing new SSH agent..."
-  # spawn ssh-agent
-  ssh-agent | sed 's/^echo/#echo/' > "$SSH_ENV"
-  echo succeeded
-  chmod 600 "$SSH_ENV"
-  . "$SSH_ENV" > /dev/null
-  ssh-add
-}
-
-# test for identities
-function test_identities {
-  # test whether standard identities have been added to the agent already
-  ssh-add -l | grep "The agent has no identities" > /dev/null
-  if [ $? -eq 0 ]; then
-    ssh-add
-    # $SSH_AUTH_SOCK broken so we start a new proper agent
-    if [ $? -eq 2 ];then
-      start_agent
-    fi
-  fi
-}
-
-# check for running ssh-agent with proper $SSH_AGENT_PID
-if [ "$(uname)" = "Darwin" ]; then
-  : # OS X uses Keychain instead of ssh-agent; do nothing here
-elif [ -n "$SSH_AGENT_PID" ]; then
-  ps -ef | grep "$SSH_AGENT_PID" | grep ssh-agent > /dev/null
-  if [ $? -eq 0 ]; then
-    test_identities
-  fi
-# if $SSH_AGENT_PID is not properly set, we might be able to load one from
-# $SSH_ENV
+# Check SSH agent health
+if [ ! "$SSH_AUTH_SOCK" ]; then
+  # Agent not running
+  need_ssh_agent=1
+  need_ssh_add=1
 else
-  if [ -f "$SSH_ENV" ]; then
-    . "$SSH_ENV" > /dev/null
+  keys="$(ssh-add -l)"
+  if [ $? -eq 2 ]; then
+    # Agent broken
+    need_ssh_agent=1
+    need_ssh_add=1
+  elif [ "$keys" = "The agent has no identities." ]; then
+    # Agent running but has no identities
+    need_ssh_add=1
   fi
-  ps -ef | grep "$SSH_AGENT_PID" | grep ssh-agent > /dev/null
-  if [ $? -eq 0 ]; then
-    test_identities
-  else
-    start_agent
+fi
+
+# Ensure SSH agent is running
+if [ "$need_ssh_agent" ]; then
+  echo "Starting new SSH agent."
+  eval "$(ssh-agent)" > /dev/null
+fi
+
+# Ensure SSH agent has identities
+if [ "$need_ssh_add" ]; then
+  if [ "$(uname)" = "Darwin" ]; then
+    ssh_add_args="-A" # Get keys from macOS keychain
   fi
+  ssh-add $ssh_add_args
 fi
 
 # Source local startup script
 [ -r ~/.bashrc_local ] && . ~/.bashrc_local
 
-echo 'Executed .bashrc'
+echo "Executed .bashrc"
 
