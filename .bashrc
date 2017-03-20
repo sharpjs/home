@@ -19,6 +19,12 @@ alias ls='ls -F'
 alias la='ls -FA'
 alias ll='ls -FAl'
 
+# Password generator
+mkpw() {
+  strings -n 1 < /dev/urandom | LC_CTYPE=C tr -d '\f\n' | head -c ${1:-20} | tee >(pbcopy)
+  echo
+}
+
 # Homebrew Stuff
 if [ "$(uname)" = "Darwin" ]; then
   function brew-why {
