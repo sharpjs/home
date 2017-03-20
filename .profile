@@ -28,6 +28,12 @@ if [ "$(which less)" ]; then
   export PAGER
 fi
 
+# Set up Rust environment
+if [ -d ~/.cargo/bin ]; then
+  PATH="~/.cargo/bin:$PATH"
+  export PATH
+fi
+
 # Set up Ruby environment
 if [ "$(which rbenv 2>/dev/null)" ]; then
     eval "$(rbenv init -)"
