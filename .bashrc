@@ -21,7 +21,7 @@ alias ll='ls -FAl'
 
 # Password generator
 mkpw() {
-  strings -n 1 < /dev/urandom | LC_CTYPE=C tr -d '\f\n' | head -c ${1:-20} | tee >(pbcopy)
+  strings -n 1 < /dev/urandom | LC_CTYPE=C tr -d '\f\n ' | head -c ${1:-20} | tee >(pbcopy)
   echo
 }
 
