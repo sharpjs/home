@@ -7,14 +7,13 @@ case "$(uname)" in
     umask 077
     ;;
   Darwin)
-    PATH=$PATH:~/.bin
+    PATH="$PATH:~/.bin"
     ;;
   MINGW32*)
     [ "`pwd | tr [:upper:] [:lower:]`" != /c/windows/system32 ] || cd
-    PATH=$PATH:~/.bin
+    PATH="$PATH:~/.bin"
     ;;
 esac
-
 export PATH
 
 # Choose editor
