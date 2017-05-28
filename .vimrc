@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'rust-lang/rust.vim'
   Plug 'vim-scripts/alex.vim'
   Plug 'vim-scripts/happy.vim'
+  Plug 'cespare/vim-toml'
 call plug#end()
 
 syntax on          " Use syntax highlighting
