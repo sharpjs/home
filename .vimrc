@@ -48,6 +48,7 @@ if has('gui_running')
   set go-=L " Hide left  scroll bar
  "set guifont=SF\ Mono\ Light:h12
   set guifont=Source\ Code\ Pro:h12
+  set cursorline
 endif
 
 " Don't autocomplete these files
