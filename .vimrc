@@ -3,12 +3,13 @@
 " Plugins
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/plugged')
+  Plug 'cespare/vim-toml'
+  Plug 'chriskempson/base16-vim'
   Plug 'junegunn/vim-easy-align'
   Plug 'lsdr/monokai'
   Plug 'rust-lang/rust.vim'
   Plug 'vim-scripts/alex.vim'
   Plug 'vim-scripts/happy.vim'
-  Plug 'cespare/vim-toml'
 call plug#end()
 
 syntax on          " Use syntax highlighting
@@ -47,7 +48,8 @@ if has('gui_running')
   set go-=r " Hide right scroll bar
   set go-=L " Hide left  scroll bar
  "set guifont=SF\ Mono\ Light:h12
-  set guifont=Source\ Code\ Pro:h12
+ "set guifont=Source\ Code\ Pro:h12
+  set guifont=Iosevka:h13
   set cursorline
 endif
 
