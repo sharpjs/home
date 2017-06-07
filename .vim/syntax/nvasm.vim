@@ -18,8 +18,8 @@ setlocal formatoptions=croqj
 setlocal iskeyword=@,48-57,$,.,_
 
 " Comments
-syn match   nvasmComment    "\v;.*"  keepend contains=nvasmTodo
-syn match   nvasmComment    "\v^#.*" keepend contains=nvasmTodo
+syn match   nvasmComment    "\v;.*"         keepend contains=nvasmTodo
+syn match   nvasmComment    "\v^#.*"        keepend contains=nvasmTodo
 syn match   nvasmTodo       "\v(TODO|FIXME|HACK|NOTE):" contained
 
 " " Macro definition
@@ -58,6 +58,7 @@ syn match   nvasmLabel      "\v^\s*\zs\K\k*\ze::?"
 syn match   nvasmSymbol     "\v^\s*\zs\u@!\K\k*\ze\s*\="
 syn match   nvasmConstant   "\v<(\u|_)(\u|\d|_)*>"
 syn match   nvasmMacroParam "\v\%([%$]|\?\??|00?|1\d+>|\K\k*>)?"
+syn match   nvasmComment    "\v<_\(.{-}\)" keepend " Put last to get priority
 
 " Registers
 syn case    ignore
