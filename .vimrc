@@ -51,6 +51,7 @@ if has('gui_running')
  "set guifont=Source\ Code\ Pro:h12
   set guifont=Iosevka:h13
   set cursorline
+  set colorcolumn=81,101
 endif
 
 " Don't autocomplete these files
