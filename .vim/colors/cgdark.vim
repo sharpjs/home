@@ -45,6 +45,7 @@ hi        Folded          ctermfg=DarkGray    guifg=#606060  ctermbg=NONE       
 hi        Cursor          ctermfg=NONE        guifg=NONE     ctermbg=NONE        guibg=#52657A  cterm=NONE  gui=NONE
 hi        CursorLine      ctermfg=NONE        guifg=NONE     ctermbg=DarkGray    guibg=#2A333C  cterm=NONE  gui=NONE
 hi        CursorColumn    ctermfg=NONE        guifg=NONE     ctermbg=DarkGray    guibg=#262E36  cterm=NONE  gui=NONE
+hi        ColorColumn     ctermfg=NONE        guifg=NONE     ctermbg=DarkGray    guibg=#262E36  cterm=NONE  gui=NONE
 
 " Gutters
 hi        LineNr          ctermfg=DarkGray    guifg=#989898  ctermbg=NONE        guibg=#363E48  cterm=NONE  gui=NONE
