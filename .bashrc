@@ -1,7 +1,17 @@
-# Bash Startup Script for Interactive Shells
+# Bash Startup Script for Interactive or Remote Shells
+# https://www.gnu.org/software/bash/manual/bash.html#Bash-Startup-Files
 
-# Systemwide Settings
-[ -r /etc/bashrc ] && . /etc/bashrc
+# Systemwide settings
+[[ -r /etc/bashrc ]] && . /etc/bashrc
+
+# For remote shells, bash runs .bashrc instead of .bash_profile.  Fix that.
+if [[ -n $SSH_CONNECTION ]]; then
+  [[ -r /etc/profile ]] && . /etc/profile
+  [[ -r   ~/.profile ]] && .   ~/.profile
+fi
+
+# Rest of file is for interactive shells only
+[[ $- == *i* ]] || return
 
 # History
 shopt -s histappend             # Append to history file instead of overwriting

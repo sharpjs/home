@@ -1,5 +1,4 @@
-# Profile
-#
+# Profile for bash and sh
 
 case "$(uname)" in
   FreeBSD)
