@@ -11,13 +11,10 @@
 [fetch]
 	prune = true
 
-[push]
-	default = simple
-
 [diff]
-	# Enable an experimental heuristic that shifts the hunk boundary
-	# in an attempt to make the resulting patch easier to read.
-	compactionHeuristic = true
+	# Enable experimental heuristics that shift diff hunk boundaries
+	# to make patches easier to read.
+	indentHeuristic = true
 
 [merge]
 	defaultToUpstream = true
