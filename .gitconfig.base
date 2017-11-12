@@ -5,6 +5,7 @@
         email = jeff.sharp@git
 
 [core]
+	# Global ignore file
 	excludesfile = ~/.gitignore
 
 [fetch]
