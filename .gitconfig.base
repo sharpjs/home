@@ -8,6 +8,10 @@
 	# Global ignore file
 	excludesfile = ~/.gitignore
 
+	# Improve readability of diffs.
+	# https://github.com/so-fancy/diff-so-fancy
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
 [fetch]
 	prune = true
 
@@ -25,14 +29,8 @@
 	fetchJobs = 4
 
 [pager]
-	# Enable change highlighting in most diffs.  Requires /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
-	log  = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
-	show = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
-	diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
-
-[interactive]
-	# Enable change highlighting in interactive staging.
-	diffFilter = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight
+	# Enable jump between files via n/N.
+	diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 
 [alias]
 	# Convenience
