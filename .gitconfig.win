@@ -11,9 +11,9 @@
     cip = "!_() { d=$(date -Is -d \"$1\") && shift && GIT_AUTHOR_DATE=\"$d\" GIT_COMMITTER_DATE=\"$d\" git commit \"$@\"; } ; _"
 
 # TFS
-	ta = "!f() { git tf checkin --deep \"${@/#/--associate=}\"; }; f"
-	tr = "!f() { git tf checkin --deep \"${@/#/--resolve=}\"; }; f"
-	tp = tf pull --deep --rebase
+#	ta = "!f() { git tf checkin --deep \"${@/#/--associate=}\"; }; f"
+#	tr = "!f() { git tf checkin --deep \"${@/#/--resolve=}\"; }; f"
+#	tp = tf pull --deep --rebase
 
 [merge]
 	tool = bc
