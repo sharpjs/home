@@ -9,6 +9,9 @@ case `uname` in
   FreeBSD)
     platform=bsd
     ;;
+  Linux)
+    platform=linux
+    ;;
   MINGW*)
     platform=win
     ;;
