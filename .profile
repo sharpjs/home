@@ -1,11 +1,14 @@
 # Profile for bash and sh
 
 case "$(uname)" in
+  Darwin)
+    PATH="$PATH:~/.bin"
+    ;;
   FreeBSD)
     PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:~/.bin
     umask 077
     ;;
-  Darwin)
+  Linux)
     PATH="$PATH:~/.bin"
     ;;
   MINGW32*)

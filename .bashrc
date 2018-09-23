@@ -21,13 +21,21 @@ HISTSIZE=1000000                # Keep 1,000,000 entries in process memory
 HISTCONTROL=ignoreboth          # Ignore duplicates and cmds starting with space
 HISTIGNORE='ls:bg:fg:history'   # Ignore specific commands
 
-# Colors
-export CLICOLOR=1
-
-# Alias
-alias ls='ls -F'
-alias la='ls -FA'
-alias ll='ls -FAl'
+# ls Colors
+case "$(uname)" in
+  FreeBSD|Darwin)
+    export CLICOLOR=1
+    alias ls='ls -F'
+    alias la='ls -FA'
+    alias ll='ls -FAl'
+    ;;
+  Linux|MINGW32*)
+    eval "$(dircolors -b)"
+    alias ls='ls -F --color'
+    alias la='ls -FA --color'
+    alias ll='ls -FAl --color'
+    ;;
+esac
 
 # Password generator
 mkpw() {
