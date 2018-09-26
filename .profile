@@ -10,6 +10,7 @@ case "$(uname)" in
     ;;
   Linux)
     PATH="$PATH:~/.bin"
+    umask 077
     ;;
   MINGW32*)
     [ "`pwd | tr [:upper:] [:lower:]`" != /c/windows/system32 ] || cd
