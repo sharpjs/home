@@ -43,13 +43,20 @@ autocmd FileType sh   setlocal softtabstop=2 shiftwidth=2
 autocmd FileType vim  setlocal softtabstop=2 shiftwidth=2
 
 if has('gui_running')
-  colorscheme cgdark
   set go-=T " Hide toolbar
   set go-=r " Hide right scroll bar
   set go-=L " Hide left  scroll bar
+  set guifont=Iosevka:h13
  "set guifont=SF\ Mono\ Light:h12
  "set guifont=Source\ Code\ Pro:h12
-  set guifont=Iosevka:h13
+endif
+
+if exists('$ConEmuBuild')
+  set termguicolors
+endif
+
+if has('gui_running') || &termguicolors
+  colorscheme cgdark
   set cursorline
   set colorcolumn=81,101
 endif
