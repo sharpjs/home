@@ -4,7 +4,7 @@ if ([Environment]::OSVersion.Version.Major -lt 10) {
 
 if ($host.Name -eq 'ConsoleHost') {
     Import-Module PSReadline
-    Set-PSReadlineOption -EditMode Emacs
+    Set-PSReadLineKeyHandler -Key Tab -Function Complete
 }
 
 $LocalProfile = "$PSScriptRoot\Local_profile.ps1"
