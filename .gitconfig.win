@@ -7,8 +7,9 @@
 	# .NET / Visual Studio
 	cl = clean -xfd -e '*.suo' -e '*.user' -e '.vs/' -e 'packages/' -e 'node_modules/'
 
-    # Enable advanced game mechanics
-    cip = "!_() { d=$(date -Is -d \"$1\") && shift && GIT_AUTHOR_DATE=\"$d\" GIT_COMMITTER_DATE=\"$d\" git commit \"$@\"; } ; _"
+	# Enable advanced game mechanics
+	cip = "!_() { d=$(date -Is -d \"$1\") && shift && GIT_AUTHOR_DATE=\"$d\" GIT_COMMITTER_DATE=\"$d\" git commit \"$@\"; } ; _"
+	aip = "!_() { d=$(date -Is -d \"$1\") && shift && GIT_AUTHOR_DATE=\"$d\" GIT_COMMITTER_DATE=\"$d\" git commit --amend --date \"$d\" \"$@\"; } ; _"
 
 # TFS
 #	ta = "!f() { git tf checkin --deep \"${@/#/--associate=}\"; }; f"

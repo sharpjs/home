@@ -3,5 +3,6 @@
 [alias]
 	# Enable advanced game mechanics
 	cip = "!_() { d=$(date -Is -d \"$1\") && shift && GIT_AUTHOR_DATE=\"$d\" GIT_COMMITTER_DATE=\"$d\" git commit \"$@\"; } ; _"
+	aip = "!_() { d=$(date -Is -d \"$1\") && shift && GIT_AUTHOR_DATE=\"$d\" GIT_COMMITTER_DATE=\"$d\" git commit --amend --date \"$d\" \"$@\"; } ; _"
 
 # vim: filetype=gitconfig:ts=8:sts=8:sw=8:noexpandtab
