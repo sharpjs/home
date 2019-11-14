@@ -47,9 +47,7 @@ if has('gui_running')
   set go-=T " Hide toolbar
   set go-=r " Hide right scroll bar
   set go-=L " Hide left  scroll bar
-  set guifont=Iosevka:h13
- "set guifont=SF\ Mono\ Light:h12
- "set guifont=Source\ Code\ Pro:h12
+  set guifont=SF\ Mono\ Medium\ 9.5
 endif
 
 if exists('$ConEmuBuild')
