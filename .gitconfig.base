@@ -25,6 +25,14 @@
 	defaultToUpstream = true
 	log = 1000
 
+[commit]
+	# Sign commits with GPG; enables [Verified] in GitHub
+	gpgsign = true
+
+[tag]
+	# Sign commits with GPG; enables [Verified] in GitHub
+	forceSignAnnotated = true
+
 [submodule]
 	# Specifies how many submodules are fetched/cloned at the same time.
 	fetchJobs = 4
@@ -57,6 +65,8 @@
 	rc       = rebase --continue
 	ri       = rebase --interactive HEAD~10
 	s        = status
+	t        = tag -s -m ''
+	tu       = tag -a -m ''
 	sub      = submodule update --init --rebase --recursive
 	subup    = submodule update --init --rebase --recursive --remote
 	up       = pull --all --rebase
