@@ -1,8 +1,9 @@
 # .home/.gitconfig.base
 
 [user]
-        name  = Jeff Sharp
-        email = jeff.sharp@git
+	name        = Jeff Sharp
+	#email      = (set in .gitconfig.local)
+	#signingkey = (set in .gitconfig.local)
 
 [core]
 	# Global ignore file
