@@ -1,0 +1,28 @@
+# Jeff Sharp's preferred keyboard mapping
+#
+# [Tab]
+# [Ctrl]
+# [Shift----]                                 [-----Shift]
+# [Meta] [Alt] [Ctrl] [---sp---] [Ctrl] [Comp] (fn) [Meta]
+#
+# Installation:
+# - less /proc/bus/input/devices 
+#   - Find your keyboard.
+#   - Note the bus, vendor, product, revision ids.
+#   - Note the eventX handler.
+#   - Edit this file to match.
+# - Copy this file to /etc/udev/hwdb.d/
+# - sudo systemd-hwdb update
+# - sudo udevadm trigger -vw /dev/input/event2
+# - sudo udevadm info /dev/input/event2
+
+# WASD Code 87 V2B
+evdev:input:b0003v04D9p0169*    # PHYSICAL  VIRTUAL
+ KEYBOARD_KEY_70039=leftctrl    # CAPS      L_CTRL
+ KEYBOARD_KEY_700e0=leftmeta    # L_CTRL    L_META
+ KEYBOARD_KEY_700e3=leftalt     # L_OS      L_ALT
+ KEYBOARD_KEY_700e2=leftctrl    # L_ALT     L_CTRL
+ KEYBOARD_KEY_700e6=rightctrl   # R_ALT     R_CTRL
+ KEYBOARD_KEY_700e7=compose     # R_OS      R_COMPOSE
+ KEYBOARD_KEY_700e4=rightmeta   # R_CTRL    R_META
+
