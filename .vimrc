@@ -48,6 +48,7 @@ if has('gui_running')
   set go-=r " Hide right scroll bar
   set go-=L " Hide left  scroll bar
   set guifont=SF\ Mono\ Medium\ 11
+  set columns=106 lines=80
 endif
 
 if exists('$ConEmuBuild')
