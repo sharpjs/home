@@ -10,7 +10,9 @@ opts+=' ro'
 opts+=' rhgb'
 opts+=' quiet'
 
-grub2-editenv - set kernelopts="$opts"
-grub2-editenv - set boot_indeterminate=0
+grub2-editenv - set   kernelopts="$opts"
+grub2-editenv - set   menu_auto_hide=2
+grub2-editenv - set   boot_success=1
+grub2-editenv - unset boot_indeterminate
 grub2-editenv - list
 
