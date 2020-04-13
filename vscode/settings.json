@@ -1,0 +1,71 @@
+{
+    "telemetry.enableTelemetry": false,
+    "editor.fontFamily": "JetBrains Mono Slashed, monospace",
+    "editor.fontSize": 13,
+    "editor.fontLigatures": "'calt' 1, 'zero' 1",
+    "editor.insertSpaces": true,
+    "editor.rulers": [80, 100],
+    "editor.minimap.maxColumn": 100,
+    "editor.renderLineHighlight": "gutter",
+    "workbench.colorCustomizations": {
+        "editorIndentGuide.activeBackground": "#383838",
+        "editorIndentGuide.background": "#282828",
+        "editorRuler.foreground": "#282828"
+    },
+    "[arm-template]": {
+        "editor.tabSize": 2
+    },
+    "[html]": {
+        "editor.tabSize": 2
+    },
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "[javascriptreact]": {
+        "editor.tabSize": 2
+    },
+    "[json]": {
+        "editor.tabSize": 2
+    },
+    "[jsonc]": {
+        "editor.tabSize": 2
+    },
+    "[less]": {
+        "editor.tabSize": 2
+    },
+    "[makefile]": {
+        "editor.tabSize": 8
+    },
+    "[markdown]": {
+        "editor.tabSize": 2
+    },
+    "[ruby]": {
+        "editor.tabSize": 2
+    },
+    "[scss]": {
+        "editor.tabSize": 2
+    },
+    "[typescript]": {
+        "editor.tabSize": 2
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 2
+    },
+    "[shellscript]": {
+        "editor.tabSize": 2
+    },
+    "[xml]": {
+        "editor.tabSize": 2
+    },
+
+    // https://github.com/VSCodeVim/Vim/#key-remapping
+    "vim.handleKeys": {
+        "<C-w>": false // Let VSCode handle this
+    },
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }
+    ]
+}
