@@ -15,7 +15,9 @@ fi
 
 # History
 shopt -s histappend             # Append to history file instead of overwriting
-shopt -s cmdhist                # Save multi-line commands as a single line
+shopt -s cmdhist                # Save multi-line commands as a single lines
+shopt -s globstar               # Enable ** wildcard in pathname expansion
+shopt -s checkwinsize           # Update LINES and COLUMNS after each command
 HISTFILESIZE=1000000            # Keep 1,000,000 entries in the history file
 HISTSIZE=1000000                # Keep 1,000,000 entries in process memory
 HISTCONTROL=ignoreboth          # Ignore duplicates and cmds starting with space
@@ -56,14 +58,13 @@ if [ "$(uname)" = "Darwin" ]; then
   }
 fi
 
-# Completions
-if [ ! "$CMPL_CARGO" ]; then
-  CMPL_CARGO=/usr/local/etc/bash_completion.d/cargo
-  [ -r "$CMPL_CARGO" ] && . "$CMPL_CARGO" && export CMPL_CARGO
-fi
-if [ ! "$CMPL_GIT" ]; then
-  CMPL_GIT=/usr/local/etc/bash_completion.d/git-completion.bash
-  [ -r "$CMPL_GIT" ] && . "$CMPL_GIT" && export CMPL_GIT
+# Completion
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
 fi
 bind 'set completion-ignore-case on'
 
