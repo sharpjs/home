@@ -15,7 +15,7 @@ fi
 
 # History
 shopt -s histappend             # Append to history file instead of overwriting
-shopt -s cmdhist                # Save multi-line commands as a single lines
+shopt -s cmdhist                # Save multi-line commands as a single line
 shopt -s globstar               # Enable ** wildcard in pathname expansion
 shopt -s checkwinsize           # Update LINES and COLUMNS after each command
 HISTFILESIZE=1000000            # Keep 1,000,000 entries in the history file
