@@ -12,6 +12,16 @@
         "editorIndentGuide.background": "#282828",
         "editorRuler.foreground": "#282828"
     },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "comment",
+                "settings": {
+                    "fontStyle": ""
+                }
+            }
+        ]
+    },
     "[arm-template]": {
         "editor.tabSize": 2
     },
@@ -66,5 +76,6 @@
             "before": ["j", "k"],
             "after": ["<Esc>"]
         }
-    ]
+    ],
+    "workbench.colorTheme": "Atom One Dark"
 }
