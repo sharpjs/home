@@ -78,5 +78,6 @@
         }
     ],
     "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "rust-client.revealOutputChannelOn": "info",
     "workbench.colorTheme": "Atom One Dark"
 }
