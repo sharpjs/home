@@ -60,6 +60,7 @@
 	dc       = diff --cached
 	f        = fetch --all
 	m        = merge --no-edit
+	po       = push origin
 	r        = rebase
 	ra       = rebase --abort
 	rc       = rebase --continue
