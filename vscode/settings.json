@@ -1,7 +1,8 @@
 {
     "telemetry.enableTelemetry": false,
-    "editor.fontFamily": "JetBrains Mono Slashed, monospace",
+    "editor.fontFamily": "Iosevka Term SS04 Expanded, JetBrains Mono Slashed, monospace",
     "editor.fontSize": 12,
+    "editor.fontWeight": "500",
     "editor.fontLigatures": true,
     "editor.insertSpaces": true,
     "editor.rulers": [80, 100],
