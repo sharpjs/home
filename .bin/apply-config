@@ -12,7 +12,7 @@ case `uname` in
   Linux)
     platform=linux
     ;;
-  MINGW*)
+  MSYS*|MINGW*)
     platform=win
     ;;
 esac
