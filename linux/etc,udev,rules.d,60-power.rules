@@ -1,0 +1,4 @@
+# Intel Wireless-AC 9260 Bluetooth Adapter
+# Disable autosuspend, because the system is unable to wake the device.
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="8087", ATTR{idProduct}=="0025", TEST=="power/control", ATTR{power/control}="on"
+
