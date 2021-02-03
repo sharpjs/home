@@ -84,5 +84,6 @@
     "ruby.useLanguageServer": true,
     "ruby.intellisense": "rubyLocate",
     "ruby.codeCompletion": "rcodetools",
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "ledger.binary": "C:\\ProgramData\\chocolatey\\bin\\ledger.exe"
 }
