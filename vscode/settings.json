@@ -92,6 +92,6 @@
     "ruby.useLanguageServer": true,
     "ruby.intellisense": "rubyLocate",
     "ruby.codeCompletion": "rcodetools",
-    "window.zoomLevel": 0,
-    "ledger.binary": "C:\\ProgramData\\chocolatey\\bin\\ledger.exe"
+    "ledger.binary": "C:\\ProgramData\\chocolatey\\bin\\ledger.exe",
+    "vscode-neovim.neovimExecutablePaths.win32": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe"
 }
