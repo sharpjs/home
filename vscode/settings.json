@@ -24,6 +24,9 @@
             }
         ]
     },
+    "files.associations": {
+        "*.psd1.t": "powershell"
+    },
     "[arm-template]": {
         "editor.tabSize": 2
     },
