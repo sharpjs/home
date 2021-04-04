@@ -26,7 +26,11 @@
         ]
     },
     "files.associations": {
+        "*.pricedb": "ledger",
         "*.psd1.t": "powershell"
+    },
+    "[ledger]": {
+        "editor.rulers": [52, 53, 65, 66, 80, 100],
     },
     "[arm-template]": {
         "editor.tabSize": 2
