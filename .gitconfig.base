@@ -27,11 +27,11 @@
 
 [commit]
 	# Sign commits with GPG; enables [Verified] in GitHub
-	gpgsign = true
+	gpgSign = true
 
 [tag]
 	# Sign commits with GPG; enables [Verified] in GitHub
-	forceSignAnnotated = true
+	gpgSign = true
 
 [submodule]
 	# Specifies how many submodules are fetched/cloned at the same time.
