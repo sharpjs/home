@@ -1,5 +1,6 @@
 {
     "telemetry.enableTelemetry": false,
+    "workbench.startupEditor": "newUntitledFile",
     "editor.fontFamily": "Iosevka Term SS04 Expanded, JetBrains Mono Slashed, monospace",
     "editor.fontSize": 12,
     "editor.fontWeight": "500",
