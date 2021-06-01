@@ -1,48 +1,68 @@
 " Vim Configuration
+" Inspiration:
+" - https://jamesdixon.dev/posts/a-minimal-vimrc/
 
 " Plugins
 " https://github.com/junegunn/vim-plug
 if !has('win32unix')
   call plug#begin('~/.vim/plugged')
     Plug 'cespare/vim-toml'
-    Plug 'chriskempson/base16-vim'
     Plug 'junegunn/vim-easy-align'
-    Plug 'lsdr/monokai'
     Plug 'rust-lang/rust.vim'
-    Plug 'vim-scripts/alex.vim'
-    Plug 'vim-scripts/happy.vim'
   call plug#end()
 endif
 
-syntax on          " Use syntax highlighting
-set number         " Line numbers
-set laststatus=2   " Always show status line
+" UI
+set number                " Line numbers
+set laststatus=2          " Always show status line
+set showcmd               " Show normal-mode commands
+
+set wildmenu                   " Show completion menu
+set wildignorecase             " Use case-insensitive completion
+set wildmode=longest:full,full " Use bash-like completion first, then menu
 
 set statusline=\ #%n:\ %<%f%(\ %m%)%=%(%y\ %)[%{&ff}]\ %04l:%03c=%02Bh\ (%3p%%)\ 
 
-filetype plugin on " Enable per-filetype plugins
-filetype indent on " Enable per-filetype indentation
+" Syntax highlighting
+syntax on                 " Use syntax highlighting
+filetype plugin on        " Enable per-filetype plugins
+filetype indent on        " Enable per-filetype indentation
 
-set tabstop=8      " What a \t is worth
-set softtabstop=4  " What the TAB key does
-set shiftwidth=4   " What the << >> commands do
-set expandtab      " Insert spaces instead of tabs
-set autoindent     " Indent next line the same
-set smartindent    " Indent more for known code blocks
-set smarttab       " TAB key uses shiftwidth at BOL
-set nowrap         " Don't wrap lines
-set modeline       " Interpret modelines
-set modelines=3    " Look at three lines
-set splitbelow     " Open splits below the current
-set splitright     " Open vsplits to right of current
-set visualbell     " Turns off annoying dings
-set nobackup       " Do not write backup (foo~) files on save
-set noswapfile     " Do not create swap (foo.swp) while editing
+" Encoding
+set encoding=utf-8        " Prefer UTF-8
+set fileformats=unix,dos  " Detect EOL types
 
-autocmd FileType html setlocal softtabstop=2 shiftwidth=2
-autocmd FileType ruby setlocal softtabstop=2 shiftwidth=2
-autocmd FileType sh   setlocal softtabstop=2 shiftwidth=2
-autocmd FileType vim  setlocal softtabstop=2 shiftwidth=2
+" Indents
+set tabstop=8             " What a \t is worth
+set softtabstop=4         " What the TAB key does
+set shiftwidth=4          " What the << >> commands do
+set expandtab             " Insert spaces instead of tabs
+set smarttab              " TAB key uses shiftwidth at BOL
+set autoindent            " Indent next line the same
+set smartindent           " Indent more for known code blocks
+set nowrap                " Don't wrap lines
+
+" Search
+set hlsearch              " Highlight search results
+set incsearch             " Search as each character is typed
+set ignorecase            " Search case-insensitively
+set smartcase             " ...unless searching for capital letters
+set showmatch             " Highlight matching parens/braces/brackets
+
+" Other
+set modeline              " Interpret modelines
+set modelines=3           " Look at three lines
+set splitbelow            " Open splits below the current
+set splitright            " Open vsplits to right of current
+set visualbell            " Turns off annoying dings
+set nobackup              " Do not write backup (foo~) files on save
+set noswapfile            " Do not create swap (foo.swp) while editing
+
+" Don't autocomplete these files
+set wildignore=*.o,*~
+
+autocmd FileType css,html,javascript,json,ruby,sh,vim,yaml
+  \ setlocal softtabstop=2 shiftwidth=2 expandtab
 
 if has('gui_running')
   set go-=m " Hide menu bar
@@ -53,7 +73,7 @@ if has('gui_running')
   set columns=221 lines=80
 endif
 
-if $COLORTERM ==? 'truecolor' || exists('$ConEmuBuild')
+if $COLORTERM ==? 'truecolor' || exists('$WT_SESSION') || exists('$ConEmuBuild')
   set termguicolors
 endif
 
@@ -63,9 +83,6 @@ if has('gui_running') || &termguicolors
   set colorcolumn=81,101
 endif
 
-" Don't autocomplete these files
-set wildignore=*.o,*.hi,*~,*.hi,Lexer.hs,Parser.hs
-
 " Use system clipboard instead of unnamed register
 if has('unnamedplus')
   set clipboard& clipboard+=unnamedplus
@@ -74,7 +91,7 @@ else
 endif
 
 " Don't move 1 char left when exiting insert mode
-au InsertLeave * call cursor([getpos('.')[1], getpos('.')[2]+1])
+autocmd InsertLeave * call cursor([getpos('.')[1], getpos('.')[2]+1])
 
 " Use jk instead of escape to exist insert mode
 inoremap jk <Esc>
