@@ -1,8 +1,8 @@
-# Bash Startup Script for Interactive or Remote Shells
+# Bash startup script for interactive or remote shells
 # https://www.gnu.org/software/bash/manual/bash.html#Bash-Startup-Files
+# https://gist.github.com/sharpjs/07a064cdbae74a13b1fc160c448a7f67
 
-# Systemwide settings
-[[ -r /etc/bashrc ]] && . /etc/bashrc
+# Bash compiled with -DSYS_BASHRC will have sourced the systemwide bashrc.
 
 # For remote shells, bash runs .bashrc instead of .bash_profile.  Fix that.
 if [[ -n $SSH_CONNECTION ]]; then
@@ -13,15 +13,25 @@ fi
 # Rest of file is for interactive shells only
 [[ $- == *i* ]] || return
 
-# History
-shopt -s histappend             # Append to history file instead of overwriting
-shopt -s cmdhist                # Save multi-line commands as a single line
-shopt -s globstar               # Enable ** wildcard in pathname expansion
+# Quality of life
+shopt -s cdspell                # Correct minor spelling errors in cd command
+shopt -s checkjobs              # Warn on exit if there are running jobs
 shopt -s checkwinsize           # Update LINES and COLUMNS after each command
+shopt -s progcomp_alias         # Show completions for expanded aliases
+
+# Globbing
+shopt -s dotglob                # Make * include .*
+shopt -s extglob                # Enable ! @ ? * + extended globbing operators
+shopt -s globstar               # Enable ** wildcard in pathname expansion
+
+# History
+shopt -s cmdhist                # Save multi-line commands as a single line
+shopt -s histappend             # Append to history file instead of overwriting
+shopt -s histverify             # Edit history substitution before executing
 HISTFILESIZE=1000000            # Keep 1,000,000 entries in the history file
 HISTSIZE=1000000                # Keep 1,000,000 entries in process memory
-HISTCONTROL=ignoreboth          # Ignore duplicates and cmds starting with space
-HISTIGNORE='ls:bg:fg:history'   # Ignore specific commands
+HISTCONTROL=ignorespace         # Ignore command lines starting with space
+HISTIGNORE='ls:la:ll:bg:fg:history' # Ignore specific command lines
 
 # ls Colors
 case "$(uname)" in
