@@ -1,4 +1,21 @@
 #!/bin/sh
 
-LC_ALL=C tr -cd '\041-\176' < /dev/urandom | head -c ${1:-20} | tee >(cb-copy)
-echo
+case "$(uname)" in
+  Darwin)
+    copy_cmd='pbcopy'
+    ;;
+  Linux)
+    if [ "$WAYLAND_DISPLAY" ] && which wl-copy >/dev/null 2>&1; then
+      copy_cmd='wl-copy'
+    elif [ "$DISPLAY" ] && which xclip >/dev/null 2>&1; then
+      copy_cmd='xclip -selection clipboard'
+    else
+      copy_cmd='cat; echo'
+    fi
+    ;;
+  *)
+    copy_cmd='cat; echo'
+    ;;
+esac
+
+LC_ALL=C tr -cd '\041-\176' < /dev/urandom | head -c ${1:-20} | eval $copy_cmd
