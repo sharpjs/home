@@ -50,6 +50,25 @@ case "$(uname)" in
     ;;
 esac
 
+# Clipboard
+case "$(uname)" in
+  Darwin)
+    alias cb-set='pbcopy'
+    alias cb-copy='tee >(pbcopy)'
+    alias cb-paste='pbpaste'
+    ;;
+  Linux)
+    if [ -n "$WAYLAND_DISPLAY" -a -n "$(which wl-copy)" ]; then
+      alias cb-set='wl-copy'
+      alias cb-copy='tee >(wl-copy)'
+      alias cb-paste='wl-paste'
+    elif [ -n "$DISPLAY" -a -n "$(which xclip)" ]; then
+      alias cb-set='xclip -selection clipboard'
+      alias cb-copy='tee >(xclip -selection clipboard)'
+      alias cb-paste='xclip -selection clipboard -o'
+    fi
+    ;;
+esac
 
 # Completion
 if ! shopt -oq posix; then
