@@ -58,11 +58,11 @@ case "$(uname)" in
     alias cb-paste='pbpaste'
     ;;
   Linux)
-    if [ -n "$WAYLAND_DISPLAY" -a -n "$(which wl-copy)" ]; then
+    if [ "$WAYLAND_DISPLAY" ] && which wl-copy >/dev/null 2>&1; then
       alias cb-set='wl-copy'
       alias cb-copy='tee >(wl-copy)'
       alias cb-paste='wl-paste'
-    elif [ -n "$DISPLAY" -a -n "$(which xclip)" ]; then
+    elif [ "$DISPLAY" ] && which xclip >/dev/null 2>&1; then
       alias cb-set='xclip -selection clipboard'
       alias cb-copy='tee >(xclip -selection clipboard)'
       alias cb-paste='xclip -selection clipboard -o'

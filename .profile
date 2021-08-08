@@ -44,7 +44,7 @@ fi
 export PATH
 
 # Choose editor
-_vim="$(which vim)"
+_vim="$(which vim 2>/dev/null)"
 if [ "$_vim" ]; then
   EDITOR="$_vim"
   export EDITOR
@@ -52,7 +52,7 @@ fi
 unset _vim
 
 # Choose pager
-_less="$(which less)"
+_less="$(which less 2>/dev/null)"
 if [ "$_less" ]; then
   PAGER="$_less"
   export PAGER
