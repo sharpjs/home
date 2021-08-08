@@ -131,6 +131,8 @@ if [ "$need_ssh_add" ]; then
   fi
   ssh-add $ssh_add_args
 fi
+unset need_ssh_agent
+unset need_ssh_add
 
 # Source local startup script
 [ -r ~/.bashrc_local ] && . ~/.bashrc_local
