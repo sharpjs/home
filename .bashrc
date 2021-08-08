@@ -49,24 +49,6 @@ case "$(uname)" in
     ;;
 esac
 
-# Password generator
-mkpw() {
-  LC_ALL=C tr -cd '\041-\176' < /dev/urandom | head -c ${1:-20} | tee >(pbcopy)
-  echo
-}
-
-# Homebrew Stuff
-if [ "$(uname)" = "Darwin" ]; then
-  function brew-why {
-    for f in $(brew list); do
-      echo -n "$f:"
-      for u in $(brew uses --installed --recursive --skip-build $f); do
-        echo -n " $u"
-      done
-      echo
-    done | column -t -s : 
-  }
-fi
 
 # Completion
 if ! shopt -oq posix; then

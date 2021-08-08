@@ -1,0 +1,4 @@
+#!/bin/sh
+
+LC_ALL=C tr -cd '\041-\176' < /dev/urandom | head -c ${1:-20} | tee >(cb-copy)
+echo

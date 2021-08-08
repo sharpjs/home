@@ -1,0 +1,9 @@
+#!/bin/sh
+
+for f in $(brew list); do
+  echo -n "$f:"
+  for u in $(brew uses --installed --recursive --skip-build $f); do
+    echo -n " $u"
+  done
+  echo
+done | column -t -s : 
