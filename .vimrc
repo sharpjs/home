@@ -69,7 +69,7 @@ if has('gui_running')
   set go-=T " Hide toolbar
   set go-=r " Hide right scroll bar
   set go-=L " Hide left  scroll bar
-  set guifont=Iosevka\ Term\ SS04\ Medium\ Expanded\ 10
+  set guifont=Iosevka\ Lomen\ 10
   set columns=221 lines=80
 endif
 
