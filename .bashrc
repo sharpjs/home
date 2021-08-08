@@ -32,6 +32,7 @@ HISTFILESIZE=1000000            # Keep 1,000,000 entries in the history file
 HISTSIZE=1000000                # Keep 1,000,000 entries in process memory
 HISTCONTROL=ignorespace         # Ignore command lines starting with space
 HISTIGNORE='ls:la:ll:bg:fg:history' # Ignore specific command lines
+# TODO: multi-session history sync
 
 # ls Colors
 case "$(uname)" in
