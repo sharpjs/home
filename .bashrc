@@ -72,13 +72,15 @@ esac
 
 # Completion
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
+  if [ -n "$BASH_COMPLETION_VERSINFO" ]; then
+    : # already loaded
+  elif [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+  bind 'set completion-ignore-case on'
 fi
-bind 'set completion-ignore-case on'
 
 # Better which
 which() {
