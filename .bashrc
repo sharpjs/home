@@ -80,7 +80,13 @@ if ! shopt -oq posix; then
 fi
 bind 'set completion-ignore-case on'
 
-# Git Stuff
+# Better which
+which() {
+  { alias; declare -f; } | /usr/bin/which \
+    --tty-only --read-alias --read-functions --show-tilde --show-dot $@
+}
+
+# Git info in prompt
 _js_git_ps1() {
   local b="$(git symbolic-ref HEAD 2>/dev/null)"
   if [ -n "$b" ]; then
