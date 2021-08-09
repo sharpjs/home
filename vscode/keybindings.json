@@ -1,0 +1,16 @@
+[
+  // Enable `jj` as an Esc sequence with Neovim extension.
+  {
+    "command": "vscode-neovim.compositeEscape1",
+    "key": "j",
+    "when": "neovim.mode == insert && editorTextFocus",
+    "args": "j"
+  },
+  // Enable `jk` as an Esc sequence with Neovim extension.
+  {
+    "command": "vscode-neovim.compositeEscape2",
+    "key": "k",
+    "when": "neovim.mode == insert && editorTextFocus",
+    "args": "k"
+  }
+]
