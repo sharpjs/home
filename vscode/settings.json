@@ -24,6 +24,13 @@
             }
         ]
     },
+    "editor.semanticTokenColorCustomizations": {
+        "rules": {
+            "*.mutable": {
+                "underline": true,
+            }
+        }
+    },
     "files.associations": {
         "*.pricedb": "ledger",
         "*.psd1.t": "powershell"
@@ -107,7 +114,13 @@
             "source": "Git Bash"
         }
     },
+    // Rust (Not currently used)
     "rust-client.revealOutputChannelOn": "info",
+    "rust-client.engine": "rust-analyzer",
+    // Rust-Analyzer (alternative to Rust)
+    "rust-analyzer.inlayHints.typeHints": false,
+    "rust-analyzer.inlayHints.parameterHints": false,
+    // Ruby
     "ruby.useLanguageServer": true,
     "ruby.intellisense": "rubyLocate",
     "ruby.codeCompletion": "rcodetools",
