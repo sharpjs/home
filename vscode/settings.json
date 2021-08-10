@@ -124,6 +124,12 @@
     "ruby.useLanguageServer": true,
     "ruby.intellisense": "rubyLocate",
     "ruby.codeCompletion": "rcodetools",
-    "ledger.binary": "C:\\ProgramData\\chocolatey\\bin\\ledger.exe",
-    "vscode-neovim.neovimExecutablePaths.win32": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe"
+    "vscode-neovim.neovimExecutablePaths.win32": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe",
+    // Other
+    "workbench.editor.untitled.hint": "hidden",
+    "redhat.telemetry.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true
 }
