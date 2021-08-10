@@ -21,7 +21,7 @@ set wildmenu                   " Show completion menu
 set wildignorecase             " Use case-insensitive completion
 set wildmode=longest:full,full " Use bash-like completion first, then menu
 
-set statusline=\ #%n:\ %<%f%(\ %m%)%=%(%y\ %)[%{&ff}]\ %04l:%03c=%02Bh\ (%3p%%)\ 
+set statusline=\ #%n:\ %<%f%(\ %m%)%=%(%y\ %)[%{&ff}]\ %04l:%03c=U+%04B\ (%3p%%)\ 
 
 " Syntax highlighting
 syntax on                 " Use syntax highlighting
