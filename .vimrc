@@ -73,7 +73,7 @@ if has('gui_running')
   set columns=221 lines=80
 endif
 
-if $COLORTERM ==? 'truecolor' || exists('$WT_SESSION') || exists('$ConEmuBuild')
+if $COLORTERM ==? 'truecolor' || exists('$WT_SESSION')
   set termguicolors
 endif
 
