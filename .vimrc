@@ -69,8 +69,17 @@ if has('gui_running')
   set go-=T " Hide toolbar
   set go-=r " Hide right scroll bar
   set go-=L " Hide left  scroll bar
-  set guifont=Iosevka\ Lomen\ 10
   set columns=221 lines=80
+  if has('gui_win32')
+    set guifont=Iosevka_Lomen:h10:cDEFAULT:qCLEARTYPE
+    set renderoptions=type:directx,geom:1,renmode:6
+    " geom:1    => RGB subpixels
+    " renmode:6 => use outlines directly, bypassing rasterizer
+  elseif has('gui_gtk2') || has('gui_gtk3')
+    set guifont=Iosevka\ Lomen\ 10
+  elseif has('gui_macvim')
+    set guifont=Iosevka_Lomen:h10
+  endif
 endif
 
 if $COLORTERM ==? 'truecolor' || exists('$WT_SESSION')
