@@ -38,7 +38,7 @@ set softtabstop=4         " What the TAB key does
 set shiftwidth=4          " What the << >> commands do
 set expandtab             " Insert spaces instead of tabs
 set smarttab              " TAB key uses shiftwidth at BOL
-set autoindent            " Indent next line the same
+set noautoindent          " Do not indent empty lines!  was: Indent next line the same
 set smartindent           " Indent more for known code blocks
 set nowrap                " Don't wrap lines
 
