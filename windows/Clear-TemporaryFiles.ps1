@@ -15,7 +15,7 @@ $Locations `
     | Get-ChildItem -Recurse -File `
     | Where-Object LastWriteTimeUtc -LT $CutoffDate `
     | Remove-Item -Force -ErrorAction SilentlyContinue -Verbose
-    
+
 $Locations `
     | Get-ChildItem -Recurse -Directory `
     | Sort-Object FullName -Descending `
