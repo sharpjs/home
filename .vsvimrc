@@ -4,6 +4,7 @@
 
 " Use system clipboard instead of unnamed register
 set clipboard=unnamed
+set textwidth=78
 
 " Use jk instead of escape to exist insert mode
 inoremap jk <Esc>
