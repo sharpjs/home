@@ -1,0 +1,72 @@
+# Jeff Sharp's preferred keyboard mapping
+#
+# [Tab]
+# [Ctrl]
+# [Shift----]                                 [-----Shift]
+# [Meta] [Alt] [Ctrl] [---sp---] [Ctrl] [Comp] (fn) [Meta]
+#
+# Installation:
+# - less /proc/bus/input/devices 
+#   - Find your keyboard.
+#   - Note the bus, vendor, product, revision ids.
+#   - Note the eventX handler.
+#   - Edit this file to match.
+# - sudo dnf install evtest
+#   - Press the keys in sequence.
+#   - Edit this file to match.
+# - Copy this file to /etc/udev/hwdb.d/
+# - sudo systemd-hwdb update
+# - sudo udevadm trigger -vw /dev/input/event2
+# - sudo udevadm info /dev/input/event2
+
+# WASD Code 87 V2B
+evdev:input:b0003v04D9p0169*    # PHYSICAL  VIRTUAL
+ KEYBOARD_KEY_70039=leftctrl    # CAPS      L_CTRL
+ KEYBOARD_KEY_700e0=leftmeta    # L_CTRL    L_META
+ KEYBOARD_KEY_700e3=leftalt     # L_OS      L_ALT
+ KEYBOARD_KEY_700e2=leftctrl    # L_ALT     L_CTRL
+ KEYBOARD_KEY_700e6=rightctrl   # R_ALT     R_CTRL
+ KEYBOARD_KEY_700e7=compose     # R_OS      R_COMPOSE
+ KEYBOARD_KEY_700e4=rightmeta   # R_CTRL    R_META
+
+# Dell XPS 15 7590 Keyboard
+# Bus=0011 Vendor=0001 Product=0001 Version=ab41 Handlers=event3
+evdev:input:b0011v0001p0001*    # PHYSICAL  VIRTUAL
+ KEYBOARD_KEY_3a=leftctrl    # CAPS      L_CTRL
+ KEYBOARD_KEY_1d=leftmeta    # L_CTRL    L_META
+ KEYBOARD_KEY_db=leftalt     # L_OS      L_ALT
+ KEYBOARD_KEY_38=leftctrl    # L_ALT     L_CTRL
+ KEYBOARD_KEY_b8=rightctrl   # R_ALT     R_CTRL
+ KEYBOARD_KEY_dd=compose     # R_OS      R_COMPOSE
+ KEYBOARD_KEY_9d=rightmeta   # R_CTRL    R_META
+#--- previous mappings ---
+#KEYBOARD_KEY_81=playpause
+#KEYBOARD_KEY_82=stopcd
+#KEYBOARD_KEY_83=previoussong
+#KEYBOARD_KEY_84=nextsong
+#KEYBOARD_KEY_85=brightnessdown
+#KEYBOARD_KEY_86=brightnessup
+#KEYBOARD_KEY_87=battery
+#KEYBOARD_KEY_88=unknown
+#KEYBOARD_KEY_89=ejectclosecd
+#KEYBOARD_KEY_8a=suspend
+#KEYBOARD_KEY_8b=switchvideomode
+#KEYBOARD_KEY_8c=!unknown
+#KEYBOARD_KEY_8f=switchvideomode
+#KEYBOARD_KEY_90=previoussong
+#KEYBOARD_KEY_91=prog1
+#KEYBOARD_KEY_92=media
+#KEYBOARD_KEY_93=unknown
+#KEYBOARD_KEY_95=camera
+#KEYBOARD_KEY_97=email
+#KEYBOARD_KEY_98=f21
+#KEYBOARD_KEY_99=nextsong
+#KEYBOARD_KEY_9a=setup
+#KEYBOARD_KEY_9b=switchvideomode
+#KEYBOARD_KEY_9e=f21
+#KEYBOARD_KEY_a2=playpause
+#KEYBOARD_KEY_a4=stopcd
+#KEYBOARD_KEY_d8=screenlock
+#KEYBOARD_KEY_d9=f21
+#KEYBOARD_KEY_ed=media
+

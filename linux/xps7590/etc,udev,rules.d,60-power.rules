@@ -1,0 +1,29 @@
+# -----------------------------------------------------------------------------
+# PCI
+
+# Disable power management for Intel AX200 Wi-Fi 6 adapter
+SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0x2723", ATTR{power/control}="on", GOTO="power_pci_done"
+
+# Enable power management on all other PCI devices
+SUBSYSTEM=="pci", ATTR{power/control}="auto"
+
+LABEL="power_pci_done"
+
+# -----------------------------------------------------------------------------
+# USB
+
+# # Disable power management for Intel AX200 Bluetooth adapter
+# ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="8087", ATTR{idProduct}=="0029", TEST=="power/control", ATTR{power/control}="on"
+# ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="8087", ATTR{idProduct}=="0029", GOTO="power_usb_done"
+
+# Enable power management on all other USB devices
+ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="auto"
+
+LABEL="power_usb_done"
+
+# -----------------------------------------------------------------------------
+# ATA
+
+# Enabl power management for SATA controllers
+KERNEL="ata[0-9]", ATTR{power/control}="auto"
+
