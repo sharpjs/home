@@ -5,7 +5,7 @@
 SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0x2723", ATTR{power/control}="on", GOTO="power_pci_done"
 
 # Enable power management on all other PCI devices
-SUBSYSTEM=="pci", ATTR{power/control}="auto"
+SUBSYSTEM=="pci", TEST=="power/control", ATTR{power/control}="auto"
 
 LABEL="power_pci_done"
 
@@ -24,6 +24,11 @@ LABEL="power_usb_done"
 # -----------------------------------------------------------------------------
 # ATA
 
-# Enabl power management for SATA controllers
-KERNEL="ata[0-9]", ATTR{power/control}="auto"
+# Enable power management on SATA ports
+SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0xa353", ATTR{ata1/power/control}="auto"
+SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0xa353", ATTR{ata2/power/control}="auto"
+SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0xa353", ATTR{ata3/power/control}="auto"
+
+# Enable SATA active link power management
+ACTION=="add", SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="med_power_with_dipm"
 

@@ -1,0 +1,21 @@
+# Some devices see their power control transition from 'auto' to 'on' when the
+# system resumes from sleep.  Retrigger their udev rules to restore their power
+# control to 'auto' as appopriate.
+
+[Unit]
+Description=Retrigger udev Devices on Resume
+After=suspend.target
+After=suspend-then-hibernate.target
+After=hibernate.target
+After=hybrid-sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=udevadm trigger -v -a power/control=on
+
+[Install]
+WantedBy=sleep.target
+# pulled in by all sleep-like targets
+
+# vim: ft=systemd:ts=4:sts=4:sw=4:et
+

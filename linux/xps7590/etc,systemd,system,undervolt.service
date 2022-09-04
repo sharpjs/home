@@ -1,6 +1,5 @@
 [Unit]
 Description=Undervolt CPU & GPU
-#After=sleep.target
 After=suspend.target
 After=suspend-then-hibernate.target
 After=hibernate.target
@@ -18,11 +17,8 @@ ExecStart=/usr/bin/python3 /usr/local/src/undervolt/undervolt.py \
 
 [Install]
 WantedBy=multi-user.target
-#WantedBy=sleep.target
-WantedBy=suspend.target
-WantedBy=suspend-then-hibernate.target
-WantedBy=hibernate.target
-WantedBy=hybrid-sleep.target
+WantedBy=sleep.target
+# pulled in by all sleep-like targets
 
-# vim: ts=4:sts=4:sw=4:et
+# vim: ft=systemd:ts=4:sts=4:sw=4:et
 
