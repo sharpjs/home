@@ -5,9 +5,11 @@ if ($host.Name -eq 'ConsoleHost') {
 }
 
 # Enable Chocolatey
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-    Import-Module $ChocolateyProfile
+if ($env:ChocolateyInstall) {
+    $ChocolateyProfile = Join-Path $env:ChocolateyInstall helpers chocolateyProfile.psm1
+    if (Test-Path $ChocolateyProfile) {
+        Import-Module $ChocolateyProfile
+    }
 }
 
 # Enable posh-git
