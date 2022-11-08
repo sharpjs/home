@@ -1,5 +1,5 @@
 # Enable bash-style completion
-if ($host.Name -eq 'ConsoleHost') {
+if ($Host.Name -eq 'ConsoleHost') {
     Import-Module PSReadline
     Set-PSReadLineKeyHandler -Key Tab -Function Complete
 }
