@@ -16,4 +16,3 @@ nnoremap <CR> o<Esc>
 " Join/krack comma-separated lists
 noremap <C-J> :s/,\?\s*\r\?\n.\@=/, /<CR>
 noremap <C-K> :s/,\@<=\s*/\r/g<CR>
-

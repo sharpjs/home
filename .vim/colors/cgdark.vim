@@ -1,8 +1,8 @@
 " CG Dark Color Scheme
-" Based on codingame.com 
+" Based on codingame.com
 "
 " Author:  Jeff Sharp <>
-" Updated: 2016-06-26 
+" Updated: 2016-06-26
 " License: Public Domain
 "
 " To see all groups
@@ -101,12 +101,11 @@ hi        Type            ctermfg=Cyan        guifg=#AAC6E3  gui=NONE
 
 " Style for special symbols
 hi        Special         ctermfg=Yellow      guifg=#9B859D  gui=NONE
-"i! link  SpecialChar     Special           
-"i! link  Tag             Special           
+"i! link  SpecialChar     Special
+"i! link  Tag             Special
 hi        Delimiter                           guifg=#24C2C7  gui=NONE
-"i        Debug           
+"i        Debug
 
 hi        Error           ctermfg=White       guifg=#D2A8A1  ctermbg=DarkRed   guibg=#482C4B  gui=underline
 
 hi! link  Todo            Preproc
-
