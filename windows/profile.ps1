@@ -1,7 +1,12 @@
 # Enable bash-style completion
 if ($Host.Name -eq 'ConsoleHost') {
     Import-Module PSReadline
-    Set-PSReadLineKeyHandler -Key Tab -Function Complete
+    Set-PSReadLineOption -EditMode Vi -BellStyle None
+    # Restore bash-like completion behavior, turned off by vi mode
+    Set-PSReadLineKeyHandler -ViMode Command -Key Tab       -Function Complete
+    Set-PSReadLineKeyHandler -ViMode Insert  -Key Tab       -Function Complete
+    Set-PSReadLineKeyHandler -ViMode Command -Key Shift+Tab -Function MenuComplete
+    Set-PSReadLineKeyHandler -ViMode Insert  -Key Shift+Tab -Function MenuComplete
 }
 
 # Enable Chocolatey
