@@ -10,6 +10,7 @@ if ($env:ChocolateyInstall) {
     if (Test-Path $ChocolateyProfile) {
         Import-Module $ChocolateyProfile
     }
+    Remove-Variable ChocolateyProfile
 }
 
 # Enable posh-git
@@ -24,6 +25,7 @@ $LocalProfile = Join-Path $PSScriptRoot Local_profile.ps1
 if (Test-Path $LocalProfile) {
     . $LocalProfile
 }
+Remove-Variable LocalProfile
 
 # Set my preferred prompt
 function prompt {
