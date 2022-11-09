@@ -1,0 +1,81 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+
+    // Startup
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "initialCols": 102,
+    "initialRows": 60,
+    "windowingBehavior": "useExisting",
+
+    // GUI
+    "disableAnimations": true,
+    "tabSwitcherMode": "disabled",
+
+    // Selection and copying
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+
+    // Profiles
+    "disabledProfileSources": ["Windows.Terminal.Azure"],
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "antialiasingMode": "cleartype",
+            "colorScheme": "One Half Dark",
+            "font": 
+            {
+                "face": "Iosevka Lomen",
+                "size": 9
+            },
+            "intenseTextStyle": "all",
+            "scrollbarState": "hidden"
+        },
+        "list": 
+        [
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "source": "Windows.Terminal.PowershellCore",
+                "name": "PowerShell 7",
+                "tabTitle": "PS 7"
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "PowerShell 5",
+                "tabTitle": "PS 5"
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "Command Prompt",
+                "tabTitle": "CMD"
+            },
+            {
+                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+                "source": "Git",
+                "name": "Git Bash",
+                "tabTitle": "Bash"
+            },
+            {
+                "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
+                "name": "Arch Linux",
+                "tabTitle": "Arch BTW",
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "guid": "{f47ad62f-3a0e-5de3-943d-5f35182182ee}",
+                "source": "Windows.Terminal.VisualStudio",
+                "name": "VS 2022 Dev PowerShell",
+                "tabTitle": "VS PS",
+                "hidden": true
+            },
+            {
+                "guid": "{8b83a5dd-2c36-51d2-bb1c-31c56e7fb9c5}",
+                "source": "Windows.Terminal.VisualStudio",
+                "name": "VS 2022 Dev Command Prompt",
+                "tabTitle": "VS CMD",
+                "hidden": true
+            }
+        ]
+    }
+}
