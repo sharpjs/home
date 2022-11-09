@@ -2,9 +2,10 @@
 
 " https://github.com/jaredpar/VsVim/wiki/Settings-Reference
 
-" Use system clipboard instead of unnamed register
-set clipboard=unnamed
-set textwidth=78
+"set clipboard=unnamed      " use system clipboard as unnamed register
+set hlsearch                " highlight search matches
+set joinspaces              " two spaces at end of sentence when reflowing
+set textwidth=79            " max line width when reflowing
 
 " Use jk instead of escape to exist insert mode
 inoremap jk <Esc>
