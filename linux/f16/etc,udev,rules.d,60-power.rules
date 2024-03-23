@@ -1,0 +1,41 @@
+# Framework Laptop 16 Power-Management Rules for udev
+# Version: 2024-03-23
+#
+# To Use:
+# - sudo install -m 644 -T etc,udev,rules.d,60-power.rules /etc/udev/rules.d/60-power.rules
+# - sudo udevadm control --reload
+# - sudo udevadm trigger
+
+# -----------------------------------------------------------------------------
+# PCI
+
+# EXAMPLE:
+# # Disable power management for Intel AX200 Wi-Fi 6 adapter
+# SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0x2723", ATTR{power/control}="on", GOTO="power_pci_done"
+
+# Enable power management on all other PCI devices
+SUBSYSTEM=="pci", TEST=="power/control", ATTR{power/control}="auto"
+
+LABEL="power_pci_done"
+
+# -----------------------------------------------------------------------------
+# USB
+
+# EXAMPLE:
+# # Disable power management for Intel AX200 Bluetooth adapter
+# ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="8087", ATTR{idProduct}=="0029", TEST=="power/control", ATTR{power/control}="on", GOTO="power_usb_done"
+
+# Enable power management on all other USB devices
+ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="auto"
+
+LABEL="power_usb_done"
+
+# -----------------------------------------------------------------------------
+# I2C
+
+# Enable power management on all other USB devices
+ACTION=="add", SUBSYSTEM=="i2c", TEST=="power/control", ATTR{power/control}="auto"
+
+LABEL="power_usb_done"
+
+
