@@ -1,0 +1,39 @@
+# Jeff Sharp's preferred keyboard mapping
+#
+# [Tab]
+# [Ctrl]
+# [Shift----]                          [-----Shift] [Caps]
+# [Meta] [Alt] [Ctrl] [---sp---] [Comp] [Menu] (fn) [Meta]
+#
+# Not all keyboards provide all those keys.
+#
+# Installation:
+# - Install the evtest package.
+# - Browse: https://github.com/torvalds/linux/blob/master/include/uapi/linux/input-event-codes.h
+# - Run: less /proc/bus/input/devices
+#   - Find your keyboard.
+#   - Note the bus, vendor, product, and revision ids.
+#   - Note the eventX handler.
+#   - Edit this file, merging the ids into the 'evdev' header line.
+# - Run: sudo evtest /dev/input/eventX
+#   - Press the keys in sequence.
+#   - Note the hex value at the end of the MSC_SCAN line.
+#   - Note the current KEY_{name} assignment.
+#   - Edit this file to remap the key.
+#       KEYBOARD_KEY_{hex-value}={name-lowercase}
+# - Copy this file to /etc/udev/hwdb.d/90-keyboard.hwdb
+# - Run: sudo systemd-hwdb update
+# - Run: sudo udevadm trigger -vw /dev/input/eventX
+# - Run: sudo udevadm info /dev/input/eventX
+#
+# Gotcha: KEY_COMPOSE is actually the Menu key, not the Compose key.  Configure
+# a key to act as the Compose key via the desktop environment, not in hwdb.
+
+# Framework Laptop 16 Keyboard - ANSI
+evdev:input:b0003v32ACp0012*    # PHYSICAL  VIRTUAL
+ KEYBOARD_KEY_70039=leftctrl    # CAPS      L_CTRL
+ KEYBOARD_KEY_700e0=leftmeta    # L_CTRL    L_META
+ KEYBOARD_KEY_700e3=leftalt     # L_OS      L_ALT
+ KEYBOARD_KEY_700e2=leftctrl    # L_ALT     L_CTRL
+ KEYBOARD_KEY_700e4=compose     # R_CTRL    MENU
+
