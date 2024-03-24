@@ -21,9 +21,8 @@ LABEL="power_pci_done"
 # -----------------------------------------------------------------------------
 # USB
 
-# EXAMPLE:
-# # Disable power management for Intel AX200 Bluetooth adapter
-# ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="8087", ATTR{idProduct}=="0029", TEST=="power/control", ATTR{power/control}="on", GOTO="power_usb_done"
+# Disable power management for Framework Laptop 16 Keyboard Module - ANSI
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="32ac", ATTR{idProduct}=="0012", TEST=="power/control", ATTR{power/control}="on", GOTO="power_usb_done"
 
 # Enable power management on all other USB devices
 ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="auto"
