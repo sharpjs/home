@@ -32,7 +32,10 @@ LABEL="power_usb_done"
 # -----------------------------------------------------------------------------
 # I2C
 
+# So far, nothing to disable.
+
 # Enable power management on all other I2C devices
 ACTION=="add", SUBSYSTEM=="i2c", TEST=="power/control", ATTR{power/control}="auto"
 
-LABEL="power_usb_done"
+LABEL="power_i2c_done"
+
