@@ -39,3 +39,5 @@ ACTION=="add", SUBSYSTEM=="i2c", TEST=="power/control", ATTR{power/control}="aut
 
 LABEL="power_i2c_done"
 
+# vim: ft=conf
+
