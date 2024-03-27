@@ -40,9 +40,10 @@ $d = Get-Location | ForEach-Object Path
 $g = Write-VcsStatus
 $n = (Get-History -Count 1 | ForEach-Object Id) + 1
 $j = Get-Job | Measure-Object | ForEach-Object Count
+$p = (Get-Variable PromptNotice -Scope Global -ErrorAction Ignore)?.Value
 @"
 ___________________________________________________________________________________________________
 $u@$m  $d$g  #$n ($j bg)
-> 
+`e[1;33m$p`e[0m> 
 "@
 }
