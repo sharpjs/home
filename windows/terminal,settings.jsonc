@@ -11,23 +11,28 @@
     // GUI
     "disableAnimations": true,
     "tabSwitcherMode": "disabled",
+    "useAcrylicInTabRow": true,
 
-    // Selection and copying
+    // Clipboard
     "copyFormatting": "none",
     "copyOnSelect": false,
 
     // Profiles
-    "disabledProfileSources": ["Windows.Terminal.Azure"],
+    "disabledProfileSources": 
+    [
+        "Windows.Terminal.Azure"
+    ],
     "profiles": 
     {
         "defaults": 
         {
+            "adjustIndistinguishableColors": "indexed",
             "antialiasingMode": "cleartype",
             "colorScheme": "One Half Dark",
             "font": 
             {
-                "face": "Iosevka Lomen",
-                "size": 9
+                "face": "Iosevka Sharpie",
+                "size": 9.0
             },
             "intenseTextStyle": "all",
             "scrollbarState": "hidden"
@@ -58,9 +63,9 @@
             },
             {
                 "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
+                "source": "Windows.Terminal.Wsl",
                 "name": "Arch Linux",
-                "tabTitle": "Arch BTW",
-                "source": "Windows.Terminal.Wsl"
+                "tabTitle": "Arch BTW"
             },
             {
                 "guid": "{f47ad62f-3a0e-5de3-943d-5f35182182ee}",
@@ -74,6 +79,13 @@
                 "source": "Windows.Terminal.VisualStudio",
                 "name": "VS 2022 Dev Command Prompt",
                 "tabTitle": "VS CMD",
+                "hidden": true
+            },
+            {
+                "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
+                "source": "VSDebugConsole",
+                "name": "Visual Studio Debug Console",
+                "closeOnExit": "graceful",
                 "hidden": true
             }
         ]
