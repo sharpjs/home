@@ -9,15 +9,20 @@ begin {
 }
 
 process {
+    $BasePath = $PSScriptRoot | Split-Path
+
     $Links = @{
         "$($PROFILE.CurrentUserAllHosts)" `
-            = "$PSScriptRoot\profile.ps1"
+            = "$BasePath\windows\profile.ps1"
 
         "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" `
-            = "$PSScriptRoot\terminal,settings.jsonc"
+            = "$BasePath\windows\terminal,settings.jsonc"
 
         "$env:LOCALAPPDATA\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\settings.json" `
-            = "$PSScriptRoot\winget,settings.jsonc"
+            = "$BasePath\windows\winget,settings.jsonc"
+
+        "$env:APPDATA\gnupg\gpg.conf"       = "$BasePath\.gnupg\gpg.conf"
+        "$env:APPDATA\gnupg\gpg-agent.conf" = "$BasePath\.gnupg\gpg-agent.conf"
     }
 
     $Links.GetEnumerator() | ForEach-Object {
