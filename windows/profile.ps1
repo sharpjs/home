@@ -9,15 +9,6 @@ if ($Host.Name -eq 'ConsoleHost') {
     Set-PSReadLineKeyHandler -ViMode Insert  -Key Shift+Tab -Function MenuComplete
 }
 
-# Enable Chocolatey
-if ($env:ChocolateyInstall) {
-    $ChocolateyProfile = Join-Path $env:ChocolateyInstall helpers chocolateyProfile.psm1
-    if (Test-Path $ChocolateyProfile) {
-        Import-Module $ChocolateyProfile
-    }
-    Remove-Variable ChocolateyProfile
-}
-
 # Enable posh-git
 if (Get-Module posh-git -ListAvailable) {
     Import-Module posh-git
