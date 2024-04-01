@@ -16,6 +16,14 @@ if (Get-Module posh-git -ListAvailable) {
     function Write-VcsStatus { }
 }
 
+# Set the location if not already set
+if ($PWD.Path -eq $HOME) {
+    "D:\Code", "D:\Projects", "$HOME\Code", "$HOME/src" `
+    | Where-Object { Test-Path $_ -PathType Container } `
+    | Select-Object -First 1 `
+    | Set-Location
+}
+
 # Load the local profile
 $LocalProfile = Join-Path $PSScriptRoot Local_profile.ps1
 if (Test-Path $LocalProfile) {
