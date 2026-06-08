@@ -1,0 +1,85 @@
+'$schema' = 'https://starship.rs/config-schema.json'
+
+format = """
+[$fill](fg:blue0)\n\
+[ \
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$jobs\
+](fg:blue2 bg:blue0)\
+[](fg:blue0 bg:0)\
+[$fill](fg:0)\
+[\
+$cmd_duration\
+$time\
+](fg:blue1 bg:0)\
+\n\n\
+$character"""
+# $kubernetes\
+
+palette = 'sharpie'
+
+[palettes.sharpie]
+blue0 = '#414a57'
+blue1 = '#6e7681'
+blue2 = '#a2adc0'
+
+[username]
+#show_always = true
+format = '[$user](fg:yellow bg:blue0)@'
+
+[hostname]
+ssh_only = false
+format   = '$ssh_symbol$hostname '
+
+[hostname.aliases]
+'Sharpie-PC'     = 'PC'
+'Sharpie-VM'     = 'VM'
+'Sharpie-Laptop' = 'Lap'
+
+[directory]
+format            = '[](fg:0 bg:blue0) $path$read_only '
+truncation_length = 3
+truncation_symbol = '…/'
+
+[git_branch]
+format = '[](fg:0 bg:blue0) $symbol$branch '
+
+[git_status]
+format      = '$all_status$ahead_behind'
+conflicted  = '[!$count](fg:bright-yellow bg:blue0) '
+ahead       = '[⇡$count](fg:bright-green  bg:blue0) '
+behind      = '[⇣$count](fg:bright-red    bg:blue0) '
+up_to_date  = ''
+untracked   = ''
+modified    = ''
+stashed     = ''
+staged      = '[+$count](fg:bright-green  bg:blue0) '
+renamed     = '[»$count](fg:bright-blue   bg:blue0) '
+deleted     = '[-$count](fg:bright-red    bg:blue0) '
+typechanged = '[︎♢$count](fg:bright-purple bg:blue0) '
+use_git_executable = true
+
+[jobs]
+number_threshold = 1
+format           = '[](fg:0 bg:blue0) $number bg '
+
+[kubernetes]
+disabled = false
+
+[fill]
+symbol = ''
+style  = 'none'
+
+[cmd_duration]
+min_time          = 0
+show_milliseconds = true
+format            = '+$duration '
+
+[time]
+disabled    = false
+format      = '$time'
+time_format = '%R' # HH:MM
