@@ -1,3 +1,6 @@
+# Starship prompt configuration
+# Docs: https://starship.rs/config/
+
 '$schema' = 'https://starship.rs/config-schema.json'
 
 format = """
@@ -17,6 +20,7 @@ $cmd_duration\
 $time\
 ](fg:blue1 bg:0)\
 \n\n\
+${custom.azps}\
 $character"""
 # $kubernetes\
 
@@ -83,3 +87,18 @@ format            = '+$duration '
 disabled    = false
 format      = '$time'
 time_format = '%R' # HH:MM
+
+[custom.azps]
+description = 'Azure PowerShell subscription name'
+os = 'windows'
+when = 'jq -e .Contexts[.DefaultContextKey].Subscription.Name^|test("production";"i") %USERPROFILE%\.azure\AzureRmContext.json'
+shell = ['cmd', '/c']
+format = '[ PROD ](bold fg:black bg:yellow) '
+
+[character]
+success_symbol            = '[](blue0)'
+error_symbol              = '[](red)'
+vimcmd_symbol             = '[N](fg:blue2 bg:blue0)'
+vimcmd_replace_one_symbol = '[r](fg:blue2 bg:blue0)'
+vimcmd_replace_symbol     = '[R](fg:blue2 bg:blue0)'
+vimcmd_visual_symbol      = '[V](fg:blue2 bg:blue0)'
