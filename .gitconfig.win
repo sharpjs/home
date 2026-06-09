@@ -17,18 +17,12 @@
 [mergetool]
 	keepBackup = false
 [mergetool "bc"]
-	path = "C:/Program Files/Beyond Compare 4/BComp.exe"
-[mergetool "diffmerge"]
-	cmd = \"C:/Program Files/SourceGear/Common/DiffMerge/sgdm.exe\" --merge  \"$LOCAL\" \"$BASE\" \"$REMOTE\" --result=\"$MERGED\" --title1=\"Head\" --title2=\"Merged: $MERGED\" --title3=\"Mine\"
-	trustExitCode = false
+	path = "C:/Program Files/Beyond Compare 5/BComp.exe"
 
 [diff]
 	tool = bc
 [difftool "bc"]
-	path = "C:/Program Files/Beyond Compare 4/BComp.exe"
-[difftool "diffmerge"]
-	cmd = \"C:/Program Files/SourceGear/Common/DiffMerge/sgdm.exe\" \"$LOCAL\" \"$REMOTE\" --title1=\"Head\" --title2=\"Mine\"
-	prompt = false
+	path = "C:/Program Files/Beyond Compare 5/BComp.exe"
 
 [gpg]
 	program = "c:/Program Files (x86)/gnupg/bin/gpg.exe"
