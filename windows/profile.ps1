@@ -17,6 +17,9 @@ if ($PWD.Path -eq $HOME) {
     | Set-Location
 }
 
+# Aliases
+New-Alias -Name k -Value kubectl
+
 # Load the local profile
 $LocalProfile = Join-Path $PSScriptRoot Local_profile.ps1
 if (Test-Path $LocalProfile) {
