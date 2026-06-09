@@ -25,6 +25,6 @@
 	path = "C:/Program Files/Beyond Compare 5/BComp.exe"
 
 [gpg]
-	program = "c:/Program Files (x86)/gnupg/bin/gpg.exe"
+	program = "c:/Program Files/gnupg/bin/gpg.exe"
 
 # vim: filetype=gitconfig:ts=8:sts=8:sw=8:noexpandtab
