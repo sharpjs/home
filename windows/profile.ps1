@@ -9,13 +9,6 @@ if ($Host.Name -eq 'ConsoleHost') {
     Set-PSReadLineKeyHandler -ViMode Insert  -Key Shift+Tab -Function MenuComplete
 }
 
-# # Enable posh-git
-# if (Get-Module posh-git -ListAvailable) {
-#     Import-Module posh-git
-# } else {
-#     function Write-VcsStatus { }
-# }
-
 # Set the location if not already set
 if ($PWD.Path -eq $HOME) {
     "D:\Code", "D:\Projects", "$HOME\Code", "$HOME/src" `
